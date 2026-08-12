@@ -180,21 +180,45 @@
         .mini-detail-card .title { font-size: 0.65rem; color: var(--text-gray); }
         .mini-detail-card .val { font-size: 0.75rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        /* الكروت */
+        /* الكروت وتعديل مربع لوجو القناة ليملأ الإطار بالكامل */
         .sat-card {
-            background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px;
+            background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px;
             overflow: hidden; margin-bottom: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.25);
         }
-        .media-box-16-9 { width: 100%; aspect-ratio: 16 / 9; background: #0f172a; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .media-box-16-9 { width: 100%; aspect-ratio: 16 / 9; background: #0f172a; overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 12px 12px 0 0; }
         .media-box-16-9 img { width: 100%; height: 100%; object-fit: cover; }
         
         .channel-name-banner, .card-header {
             padding: 9px 12px; font-size: 0.88rem; font-weight: 800; color: var(--accent-gold);
             background: rgba(255, 255, 255, 0.02); display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none;
         }
-        .channel-title { display: flex; align-items: center; gap: 8px; }
-        .logo-box { width: 32px; height: 32px; background: #1e293b; border-radius: 6px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid var(--card-border); }
-        .logo-box img { width: 100%; height: 100%; object-fit: cover; }
+        .channel-title { display: flex; align-items: center; gap: 10px; }
+        
+        /* إتاحة تعبئة اللوجو للقنوات فقط دون حواف فارغة */
+        .logo-box {
+            width: 52px;
+            height: 52px;
+            background: #1e293b;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            flex-shrink: 0;
+            padding: 0;
+        }
+        .logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 9px;
+            transition: transform 0.3s ease;
+        }
+        .logo-box:hover img {
+            transform: scale(1.05);
+        }
         
         .arrow-icon { color: var(--text-gray); font-size: 0.8rem; transition: transform 0.3s; }
         .arrow-icon.open { transform: rotate(180deg); }
@@ -207,7 +231,7 @@
         .info-row { display: flex; align-items: center; justify-content: space-between; font-size: 0.82rem; }
         .info-label { color: var(--text-gray); display: flex; align-items: center; gap: 6px; }
         .info-value { font-weight: 700; }
-        .icon-badge { width: 26px; height: 26px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; }
+        .icon-badge { width: 26px; height: 26px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; }
         .icon-blue { background: rgba(37, 99, 235, 0.15); color: #60a5fa; }
         .icon-green { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); }
         .icon-gold { background: rgba(245, 158, 11, 0.15); color: var(--accent-gold); }
@@ -219,7 +243,7 @@
         }
         .same-timeshift-title { font-size: 0.75rem; color: var(--accent-gold); font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
         .receivers-tags { display: flex; flex-wrap: wrap; gap: 4px; }
-        .receiver-tag { background: #1e293b; border: 1px solid var(--card-border); color: var(--text-white); font-size: 0.72rem; padding: 2px 8px; border-radius: 5px; font-weight: 600; }
+        .receiver-tag { background: #1e293b; border: 1px solid var(--card-border); color: var(--text-white); font-size: 0.72rem; padding: 2px 8px; border-radius: 6px; font-weight: 600; }
 
         /* اللوحات المخفية للأدمن */
         .modal-overlay {
