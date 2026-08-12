@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مهندس محمد السعيد - GOSAT PLUS</title>
+    <title>GOSAT PLUS - سيرفر جوسات بلس</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -61,7 +61,7 @@
             100% { transform: translateY(0px) rotate(0deg); }
         }
 
-        header h1 { font-size: 1.15rem; font-weight: 800; color: var(--text-white); display: flex; align-items: center; gap: 5px; }
+        header h1 { font-size: 1.25rem; font-weight: 800; color: var(--text-white); display: flex; align-items: center; gap: 6px; letter-spacing: 0.5px; }
         
         .verified-badge {
             color: var(--badge-blue);
@@ -79,32 +79,22 @@
             100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(29, 155, 240, 0.4)); }
         }
 
-        .header-badges-row {
-            display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 2px;
+        /* الشريط الأسفل للهيدر: شيرنج • صوتيات • ترجمة */
+        .header-services-row {
+            display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 2px;
+            font-size: 0.72rem; font-weight: 700; color: var(--text-gray);
         }
 
-        header .badge {
-            display: inline-block; background: rgba(245, 158, 11, 0.15); color: var(--accent-gold);
-            border: 1px solid var(--accent-gold); padding: 2px 8px; border-radius: 16px; font-size: 0.75rem; font-weight: 700;
+        .header-services-row span {
+            color: var(--accent-gold);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
 
-        .whatsapp-sub-btn {
-            display: inline-flex; align-items: center; gap: 5px;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: #ffffff; text-decoration: none; padding: 3px 10px; border-radius: 16px;
-            font-size: 0.73rem; font-weight: 700;
-            box-shadow: 0 0 10px rgba(37, 211, 102, 0.4);
-            animation: whatsappGlow 2.5s infinite ease-in-out;
-            transition: transform 0.2s;
-        }
-
-        .whatsapp-sub-btn:active { transform: scale(0.95); }
-        .whatsapp-sub-btn i { font-size: 0.85rem; }
-
-        @keyframes whatsappGlow {
-            0% { box-shadow: 0 0 6px rgba(37, 211, 102, 0.4); }
-            50% { box-shadow: 0 0 14px rgba(37, 211, 102, 0.85); }
-            100% { box-shadow: 0 0 6px rgba(37, 211, 102, 0.4); }
+        .header-services-row .dot-separator {
+            color: var(--card-border);
+            font-size: 0.5rem;
         }
 
         .container { max-width: 520px; margin: 0 auto; padding: 0 10px; }
@@ -180,7 +170,7 @@
         .mini-detail-card .title { font-size: 0.65rem; color: var(--text-gray); }
         .mini-detail-card .val { font-size: 0.75rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        /* الكروت وتعديل مربع لوجو القناة ليملأ الإطار بالكامل */
+        /* الكروت وتعديل مربع لوجو القناة */
         .sat-card {
             background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px;
             overflow: hidden; margin-bottom: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.25);
@@ -194,7 +184,6 @@
         }
         .channel-title { display: flex; align-items: center; gap: 10px; }
         
-        /* إتاحة تعبئة اللوجو للقنوات فقط دون حواف فارغة */
         .logo-box {
             width: 52px;
             height: 52px;
@@ -267,21 +256,21 @@
 </head>
 <body>
 
-    <!-- الهيدر الموثق والثابت أعلى الشاشة -->
+    <!-- الهيدر الموثق بالاسم والخدمات الجديدة -->
     <header>
         <div class="header-title-container">
             <i class="fa-solid fa-satellite-dish header-dish-icon"></i>
             <h1>
-                مهندس محمد السعيد
+                GOSAT PLUS
                 <i class="fa-solid fa-circle-check verified-badge" title="حساب موثق"></i>
             </h1>
         </div>
-        <div class="header-badges-row">
-            <div class="badge">موزع معتمد GOSAT PLUS</div>
-            <a href="https://wa.me/mohamedelsaed2307" target="_blank" class="whatsapp-sub-btn">
-                <i class="fa-brands fa-whatsapp"></i>
-                <span>للاشتراك عبر الواتساب</span>
-            </a>
+        <div class="header-services-row">
+            <span>شيرنج</span>
+            <i class="fa-solid fa-circle dot-separator"></i>
+            <span>صوتيات</span>
+            <i class="fa-solid fa-circle dot-separator"></i>
+            <span>ترجمة</span>
         </div>
     </header>
 
