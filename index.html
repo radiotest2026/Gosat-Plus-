@@ -18,72 +18,146 @@
             --accent-green: #10b981;
             --accent-red: #ef4444;
             --accent-gold: #f59e0b;
+            --badge-blue: #1d9bf0;
         }
 
         * { box-sizing: border-box; font-family: 'Cairo', sans-serif; margin: 0; padding: 0; }
-        body { background-color: var(--bg-main); color: var(--text-white); padding-bottom: 40px; min-height: 100vh; }
+        body { background-color: var(--bg-main); color: var(--text-white); padding-bottom: 30px; min-height: 100vh; }
 
+        /* تثبيت الهيدر العلوي */
         header {
-            background: linear-gradient(180deg, #162238 0%, #0b1120 100%);
-            padding: 20px 15px; text-align: center; border-bottom: 1px solid var(--card-border); user-select: none;
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 990;
+            background: rgba(11, 17, 32, 0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 10px 12px 8px 12px;
+            text-align: center;
+            border-bottom: 1px solid var(--card-border);
+            user-select: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
-        header h1 { font-size: 1.4rem; font-weight: 800; color: var(--text-white); margin-bottom: 4px; }
+        
+        .header-title-container {
+            display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 4px;
+        }
+
+        .header-dish-icon {
+            font-size: 1.3rem; color: var(--accent-gold);
+            filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.4));
+            animation: floatDish 4s ease-in-out infinite;
+        }
+
+        @keyframes floatDish {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-4px) rotate(-6deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        header h1 { font-size: 1.15rem; font-weight: 800; color: var(--text-white); display: flex; align-items: center; gap: 5px; }
+        
+        .verified-badge {
+            color: var(--badge-blue);
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 0 5px rgba(29, 155, 240, 0.5));
+            animation: verifiedPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes verifiedPulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(29, 155, 240, 0.4)); }
+            50% { transform: scale(1.12); filter: drop-shadow(0 0 8px rgba(29, 155, 240, 0.8)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(29, 155, 240, 0.4)); }
+        }
+
+        .header-badges-row {
+            display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 2px;
+        }
+
         header .badge {
             display: inline-block; background: rgba(245, 158, 11, 0.15); color: var(--accent-gold);
-            border: 1px solid var(--accent-gold); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 700;
+            border: 1px solid var(--accent-gold); padding: 2px 8px; border-radius: 16px; font-size: 0.75rem; font-weight: 700;
         }
 
-        .container { max-width: 600px; margin: 0 auto; padding: 0 15px; }
+        .whatsapp-sub-btn {
+            display: inline-flex; align-items: center; gap: 5px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: #ffffff; text-decoration: none; padding: 3px 10px; border-radius: 16px;
+            font-size: 0.73rem; font-weight: 700;
+            box-shadow: 0 0 10px rgba(37, 211, 102, 0.4);
+            animation: whatsappGlow 2.5s infinite ease-in-out;
+            transition: transform 0.2s;
+        }
+
+        .whatsapp-sub-btn:active { transform: scale(0.95); }
+        .whatsapp-sub-btn i { font-size: 0.85rem; }
+
+        @keyframes whatsappGlow {
+            0% { box-shadow: 0 0 6px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 0 14px rgba(37, 211, 102, 0.85); }
+            100% { box-shadow: 0 0 6px rgba(37, 211, 102, 0.4); }
+        }
+
+        .container { max-width: 520px; margin: 0 auto; padding: 0 10px; }
 
         /* البوابة الرئيسية */
         .date-banner {
             text-align: center; background: var(--card-bg); border: 1px solid var(--card-border);
-            border-radius: 12px; padding: 12px; margin: 20px 0; cursor: pointer; user-select: none;
+            border-radius: 10px; padding: 8px 10px; margin: 12px 0; cursor: pointer; user-select: none;
         }
-        .date-banner h3 { color: var(--accent-gold); font-size: 1.1rem; }
-        .date-banner p { color: var(--text-gray); font-size: 0.85rem; }
+        .date-banner h3 { color: var(--accent-gold); font-size: 0.95rem; }
+        .date-banner p { color: var(--text-gray); font-size: 0.75rem; }
 
         .match-card-item {
-            background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px;
-            padding: 15px; margin-bottom: 15px; cursor: pointer; transition: transform 0.2s;
+            background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px;
+            padding: 10px 12px; margin-bottom: 10px; cursor: pointer; transition: transform 0.2s;
         }
-        .match-card-item:hover { transform: translateY(-3px); border-color: var(--accent-blue); }
+        .match-card-item:hover { transform: translateY(-2px); border-color: var(--accent-blue); }
 
         .match-card-tournament {
-            text-align: center; font-size: 0.85rem; color: var(--accent-gold); font-weight: 700;
-            background: rgba(245, 158, 11, 0.1); padding: 2px 10px; border-radius: 10px; display: inline-block; margin-bottom: 10px;
+            text-align: center; font-size: 0.75rem; color: var(--accent-gold); font-weight: 700;
+            background: rgba(245, 158, 11, 0.1); padding: 1px 8px; border-radius: 8px; display: inline-block; margin-bottom: 6px;
         }
 
         .teams-vs-box { display: flex; align-items: center; justify-content: space-around; width: 100%; }
-        .team-item { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 35%; }
+        .team-item { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 38%; }
         .team-logo-circle {
-            width: 55px; height: 55px; border-radius: 50%; background: #1e293b; border: 2px solid var(--accent-blue);
+            width: 42px; height: 42px; border-radius: 50%; background: #1e293b; border: 1.5px solid var(--accent-blue);
             display: flex; align-items: center; justify-content: center; overflow: hidden;
         }
-        .team-logo-circle img { width: 80%; height: 80%; object-fit: contain; }
-        .team-name { font-size: 0.9rem; font-weight: 700; text-align: center; }
+        .team-logo-circle img { width: 75%; height: 75%; object-fit: contain; }
+        .team-name { font-size: 0.8rem; font-weight: 700; text-align: center; }
 
         .time-box { text-align: center; }
         .match-time-badge {
-            font-size: 0.85rem; font-weight: 800; color: var(--accent-green); background: rgba(16, 185, 129, 0.15);
-            padding: 5px 12px; border-radius: 20px; border: 1px solid var(--accent-green);
+            font-size: 0.75rem; font-weight: 800; color: var(--accent-green); background: rgba(16, 185, 129, 0.15);
+            padding: 3px 9px; border-radius: 14px; border: 1px solid var(--accent-green);
         }
 
         /* شاشة التفاصيل */
         .back-btn {
             background: #1e293b; color: var(--text-white); border: 1px solid var(--card-border);
-            padding: 8px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: 15px;
-            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 12px; border-radius: 6px; font-size: 0.82rem; font-weight: 700; cursor: pointer; margin-top: 10px;
+            display: inline-flex; align-items: center; gap: 6px;
         }
 
         .tabs-container {
-            display: flex; justify-content: center; gap: 10px; margin: 15px 0; background: #111827;
-            padding: 5px; border-radius: 12px; border: 1px solid var(--card-border);
+            display: flex; justify-content: center; gap: 6px; margin: 10px 0; background: #111827;
+            padding: 4px; border-radius: 10px; border: 1px solid var(--card-border);
         }
         .tab-btn {
-            flex: 1; padding: 12px; border: none; background: transparent; color: var(--text-gray);
-            font-size: 1rem; font-weight: 700; border-radius: 8px; cursor: pointer; display: flex;
-            align-items: center; justify-content: center; gap: 8px; user-select: none;
+            flex: 1; padding: 8px; border: none; background: transparent; color: var(--text-gray);
+            font-size: 0.85rem; font-weight: 700; border-radius: 6px; cursor: pointer; display: flex;
+            align-items: center; justify-content: center; gap: 6px; user-select: none;
         }
         .tab-btn.active { background: var(--accent-blue); color: var(--text-white); }
 
@@ -91,49 +165,49 @@
         .tab-content.active { display: block; }
 
         .match-header-card {
-            background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px;
-            padding: 20px 15px; margin-bottom: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px;
+            padding: 12px 10px; margin-bottom: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        .match-top-info { text-align: center; margin-bottom: 15px; }
-        .match-date-time { font-size: 0.8rem; color: var(--text-gray); display: flex; justify-content: center; gap: 15px; }
+        .match-top-info { text-align: center; margin-bottom: 8px; }
+        .match-date-time { font-size: 0.75rem; color: var(--text-gray); display: flex; justify-content: center; gap: 10px; }
 
         .match-extra-details {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 15px;
-            padding-top: 15px; border-top: 1px dashed var(--card-border);
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 10px;
+            padding-top: 10px; border-top: 1px dashed var(--card-border);
         }
-        .mini-detail-card { background: #0f172a; border: 1px solid var(--card-border); border-radius: 10px; padding: 8px; text-align: center; }
-        .mini-detail-card i { font-size: 0.9rem; margin-bottom: 4px; display: block; }
-        .mini-detail-card .title { font-size: 0.7rem; color: var(--text-gray); }
-        .mini-detail-card .val { font-size: 0.8rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .mini-detail-card { background: #0f172a; border: 1px solid var(--card-border); border-radius: 8px; padding: 6px 4px; text-align: center; }
+        .mini-detail-card i { font-size: 0.8rem; margin-bottom: 2px; display: block; }
+        .mini-detail-card .title { font-size: 0.65rem; color: var(--text-gray); }
+        .mini-detail-card .val { font-size: 0.75rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
         /* الكروت */
         .sat-card {
-            background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px;
-            overflow: hidden; margin-bottom: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px;
+            overflow: hidden; margin-bottom: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.25);
         }
         .media-box-16-9 { width: 100%; aspect-ratio: 16 / 9; background: #0f172a; overflow: hidden; display: flex; align-items: center; justify-content: center; }
         .media-box-16-9 img { width: 100%; height: 100%; object-fit: cover; }
         
         .channel-name-banner, .card-header {
-            padding: 14px 20px; font-size: 1rem; font-weight: 800; color: var(--accent-gold);
+            padding: 9px 12px; font-size: 0.88rem; font-weight: 800; color: var(--accent-gold);
             background: rgba(255, 255, 255, 0.02); display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none;
         }
-        .channel-title { display: flex; align-items: center; gap: 12px; }
-        .logo-box { width: 44px; height: 44px; background: #1e293b; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid var(--card-border); }
+        .channel-title { display: flex; align-items: center; gap: 8px; }
+        .logo-box { width: 32px; height: 32px; background: #1e293b; border-radius: 6px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid var(--card-border); }
         .logo-box img { width: 100%; height: 100%; object-fit: cover; }
         
-        .arrow-icon { color: var(--text-gray); transition: transform 0.3s; }
+        .arrow-icon { color: var(--text-gray); font-size: 0.8rem; transition: transform 0.3s; }
         .arrow-icon.open { transform: rotate(180deg); }
 
         .card-body {
-            padding: 15px 20px; display: none; flex-direction: column; gap: 12px; border-top: 1px solid var(--card-border);
+            padding: 10px 12px; display: none; flex-direction: column; gap: 8px; border-top: 1px solid var(--card-border);
         }
         .card-body.active { display: flex; }
         
-        .info-row { display: flex; align-items: center; justify-content: space-between; font-size: 0.95rem; }
-        .info-label { color: var(--text-gray); display: flex; align-items: center; gap: 8px; }
+        .info-row { display: flex; align-items: center; justify-content: space-between; font-size: 0.82rem; }
+        .info-label { color: var(--text-gray); display: flex; align-items: center; gap: 6px; }
         .info-value { font-weight: 700; }
-        .icon-badge { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; }
+        .icon-badge { width: 26px; height: 26px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; }
         .icon-blue { background: rgba(37, 99, 235, 0.15); color: #60a5fa; }
         .icon-green { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); }
         .icon-gold { background: rgba(245, 158, 11, 0.15); color: var(--accent-gold); }
@@ -141,36 +215,50 @@
         .val-gold { color: var(--accent-gold); }
 
         .same-timeshift-receivers-box {
-            background: #0f172a; border: 1px solid var(--card-border); border-radius: 12px; padding: 12px; margin-bottom: 20px;
+            background: #0f172a; border: 1px solid var(--card-border); border-radius: 10px; padding: 8px 10px; margin-bottom: 12px;
         }
-        .same-timeshift-title { font-size: 0.82rem; color: var(--accent-gold); font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
-        .receivers-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-        .receiver-tag { background: #1e293b; border: 1px solid var(--card-border); color: var(--text-white); font-size: 0.8rem; padding: 3px 10px; border-radius: 6px; font-weight: 600; }
+        .same-timeshift-title { font-size: 0.75rem; color: var(--accent-gold); font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
+        .receivers-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+        .receiver-tag { background: #1e293b; border: 1px solid var(--card-border); color: var(--text-white); font-size: 0.72rem; padding: 2px 8px; border-radius: 5px; font-weight: 600; }
 
-        /* اللوحات المخفية */
+        /* اللوحات المخفية للأدمن */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 999; align-items: center; justify-content: center; padding: 15px;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 999; align-items: center; justify-content: center; padding: 12px;
         }
-        .modal-box { background: #1e293b; border: 1px solid var(--card-border); width: 100%; max-width: 550px; border-radius: 16px; padding: 20px; max-height: 90vh; overflow-y: auto; }
-        .form-section { background: #0f172a; border: 1px solid var(--card-border); padding: 12px; border-radius: 10px; margin-bottom: 15px; }
-        .form-section h4 { margin-bottom: 10px; font-size: 0.95rem; }
-        .form-group { margin-bottom: 10px; }
-        .form-group label { display: block; font-size: 0.8rem; color: var(--text-gray); margin-bottom: 4px; }
-        .form-group input, .form-group select { width: 100%; padding: 9px; background: #1e293b; border: 1px solid var(--card-border); border-radius: 8px; color: white; font-size: 0.88rem; }
-        .btn-action { width: 100%; padding: 12px; background: var(--accent-blue); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: 10px; }
+        .modal-box { background: #1e293b; border: 1px solid var(--card-border); width: 100%; max-width: 480px; border-radius: 14px; padding: 16px; max-height: 90vh; overflow-y: auto; }
+        .form-section { background: #0f172a; border: 1px solid var(--card-border); padding: 10px; border-radius: 8px; margin-bottom: 12px; }
+        .form-section h4 { margin-bottom: 8px; font-size: 0.85rem; }
+        .form-group { margin-bottom: 8px; }
+        .form-group label { display: block; font-size: 0.75rem; color: var(--text-gray); margin-bottom: 3px; }
+        .form-group input, .form-group select { width: 100%; padding: 7px; background: #1e293b; border: 1px solid var(--card-border); border-radius: 6px; color: white; font-size: 0.82rem; }
+        .btn-action { width: 100%; padding: 9px; background: var(--accent-blue); color: white; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; margin-top: 8px; font-size: 0.85rem; }
 
-        .cards-manage-list { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
-        .manage-item { background: #1e293b; border: 1px solid var(--card-border); padding: 8px 12px; border-radius: 8px; display: flex; align-items: center; justify-content: space-between; }
-        .manage-item-btn { padding: 4px 8px; border-radius: 6px; border: none; font-size: 0.75rem; font-weight: 700; cursor: pointer; margin-right: 4px; }
+        .cards-manage-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+        .manage-item { background: #1e293b; border: 1px solid var(--card-border); padding: 6px 10px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.8rem; }
+        .manage-item-btn { padding: 3px 6px; border-radius: 4px; border: none; font-size: 0.7rem; font-weight: 700; cursor: pointer; margin-right: 3px; }
+        .btn-edit { background: var(--accent-gold); color: #000; }
         .btn-delete { background: var(--accent-red); color: #fff; }
     </style>
 </head>
 <body>
 
+    <!-- الهيدر الموثق والثابت أعلى الشاشة -->
     <header>
-        <h1>مهندس محمد السعيد</h1>
-        <div class="badge">موزع معتمد GOSAT PLUS</div>
+        <div class="header-title-container">
+            <i class="fa-solid fa-satellite-dish header-dish-icon"></i>
+            <h1>
+                مهندس محمد السعيد
+                <i class="fa-solid fa-circle-check verified-badge" title="حساب موثق"></i>
+            </h1>
+        </div>
+        <div class="header-badges-row">
+            <div class="badge">موزع معتمد GOSAT PLUS</div>
+            <a href="https://wa.me/mohamedelsaed2307" target="_blank" class="whatsapp-sub-btn">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>للاشتراك عبر الواتساب</span>
+            </a>
+        </div>
     </header>
 
     <div class="container">
@@ -216,30 +304,33 @@
     <div id="home-admin-modal" class="modal-overlay">
         <div class="modal-box">
             <div id="home-admin-login">
-                <h3 style="margin-bottom:15px; text-align:center;">إدارة قائمة المباريات واليوم</h3>
+                <h3 style="margin-bottom:12px; text-align:center; font-size:1rem;">إدارة قائمة المباريات واليوم</h3>
                 <div class="form-group"><input type="password" id="home-pass-code" placeholder="كلمة المرور (108)"></div>
                 <button class="btn-action" onclick="checkHomePassword()">دخول</button>
             </div>
             <div id="home-admin-form" style="display:none;">
-                <h3 style="margin-bottom:15px; color:var(--accent-gold);">تعديل اليوم وإضافة مباراة</h3>
+                <h3 style="margin-bottom:12px; color:var(--accent-gold); font-size:1rem;">تعديل اليوم وإدارة المباريات</h3>
                 <div class="form-section">
-                    <h4>تعديل نص اليوم والتاريخ</h4>
+                    <h4>تعديل نص اليوم والتاريخ (اختياري)</h4>
                     <div class="form-group"><input type="text" id="in-today-date" placeholder="الأربعاء، 12 أغسطس 2026"></div>
                     <button class="btn-action" style="background:var(--accent-gold); color:#000;" onclick="saveTodayDate()">حفظ التاريخ</button>
                 </div>
                 <div class="form-section">
-                    <h4>إضافة مباراة جديدة اليوم</h4>
-                    <div class="form-group"><label>اسم البطولة</label><input type="text" id="in-m-tournament" placeholder="دوري أبطال أفريقيا"></div>
-                    <div class="form-group"><label>الفريق الأول</label><input type="text" id="in-m-t1-name" placeholder="الأهلي"></div>
-                    <div class="form-group"><label>لوجو الفريق الأول</label><input type="text" id="in-m-t1-img" placeholder="رابط URL"></div>
-                    <div class="form-group"><label>الفريق الثاني</label><input type="text" id="in-m-t2-name" placeholder="الزمالك"></div>
-                    <div class="form-group"><label>لوجو الفريق الثاني</label><input type="text" id="in-m-t2-img" placeholder="رابط URL"></div>
-                    <div class="form-group"><label>توقيت المباراة</label><input type="text" id="in-m-time" placeholder="09:00 مساءً"></div>
-                    <div class="form-group"><label>المعلق الرئيسي</label><input type="text" id="in-m-comm" placeholder="عصام الشوالي"></div>
-                    <button class="btn-action" onclick="addMatch()">إضافة المباراة للقائمة</button>
+                    <h4 id="match-form-title">إضافة مباراة جديدة اليوم (جميع الخانات اختيارية)</h4>
+                    <input type="hidden" id="edit-match-id" value="">
+                    <div class="form-group"><label>اسم البطولة (اختياري)</label><input type="text" id="in-m-tournament" placeholder="دوري أبطال أفريقيا"></div>
+                    <div class="form-group"><label>الفريق الأول (اختياري)</label><input type="text" id="in-m-t1-name" placeholder="الأهلي"></div>
+                    <div class="form-group"><label>لوجو الفريق الأول (اختياري)</label><input type="text" id="in-m-t1-img" placeholder="رابط URL"></div>
+                    <div class="form-group"><label>الفريق الثاني (اختياري)</label><input type="text" id="in-m-t2-name" placeholder="الزمالك"></div>
+                    <div class="form-group"><label>لوجو الفريق الثاني (اختياري)</label><input type="text" id="in-m-t2-img" placeholder="رابط URL"></div>
+                    <div class="form-group"><label>توقيت المباراة (اختياري)</label><input type="text" id="in-m-time" placeholder="09:00 مساءً"></div>
+                    <div class="form-group"><label>المعلق الرئيسي (اختياري)</label><input type="text" id="in-m-comm" placeholder="عصام الشوالي"></div>
+                    <div class="form-group"><label>القناة الناقلة الرئيسية (اختياري)</label><input type="text" id="in-m-main-channel" placeholder="beIN Sports HD 1"></div>
+                    <div class="form-group"><label>القناة الصوتية (اختياري)</label><input type="text" id="in-m-audio-track" placeholder="Audio 1 / Audio 2"></div>
+                    <button class="btn-action" onclick="addOrUpdateMatch()">حفظ / نشر المباراة</button>
                 </div>
                 <div class="form-section">
-                    <h4>المباريات الحالية (حذف)</h4>
+                    <h4>المباريات الحالية (تعديل / حذف)</h4>
                     <div class="cards-manage-list" id="manage-matches-list"></div>
                 </div>
                 <button class="btn-action" style="background:var(--accent-red);" onclick="closeModal('home')">إغلاق</button>
@@ -251,23 +342,24 @@
     <div id="ch-admin-modal" class="modal-overlay">
         <div class="modal-box">
             <div id="ch-admin-login">
-                <h3 style="margin-bottom:15px; text-align:center;">إدارة القنوات الناقلة لهذه المباراة</h3>
+                <h3 style="margin-bottom:12px; text-align:center; font-size:1rem;">إدارة القنوات الناقلة لهذه المباراة</h3>
                 <div class="form-group"><input type="password" id="ch-pass-code" placeholder="كلمة المرور (108)"></div>
                 <button class="btn-action" onclick="checkChPassword()">دخول</button>
             </div>
             <div id="ch-admin-form" style="display:none;">
-                <h3 style="margin-bottom:15px; color:var(--accent-blue);">إضافة قناة ناقلة جديدة</h3>
+                <h3 style="margin-bottom:12px; color:var(--accent-blue); font-size:1rem;" id="ch-form-title">إضافة قناة ناقلة جديدة</h3>
+                <input type="hidden" id="edit-ch-id" value="">
                 <div class="form-section">
-                    <div class="form-group"><label>اسم القناة</label><input type="text" id="in-ch-name" placeholder="beIN SPORTS 1 HD"></div>
-                    <div class="form-group"><label>رابط اللوجو</label><input type="text" id="in-ch-img" placeholder="رابط الصورة"></div>
-                    <div class="form-group"><label>القمر</label><input type="text" id="in-ch-sat" placeholder="Nilesat 7.0W"></div>
-                    <div class="form-group"><label>التردد</label><input type="text" id="in-ch-freq" placeholder="11054"></div>
-                    <div class="form-group"><label>الاستقطاب</label><select id="in-ch-polar"><option value="H">أفقي (H)</option><option value="V">عمودي (V)</option></select></div>
-                    <div class="form-group"><label>معدل الترميز</label><input type="text" id="in-ch-rate" placeholder="27500"></div>
+                    <div class="form-group"><label>اسم القناة (اختياري)</label><input type="text" id="in-ch-name" placeholder="beIN SPORTS 1 HD"></div>
+                    <div class="form-group"><label>رابط اللوجو (اختياري)</label><input type="text" id="in-ch-img" placeholder="رابط الصورة"></div>
+                    <div class="form-group"><label>القمر (اختياري)</label><input type="text" id="in-ch-sat" placeholder="Nilesat 7.0W"></div>
+                    <div class="form-group"><label>التردد (اختياري)</label><input type="text" id="in-ch-freq" placeholder="11054"></div>
+                    <div class="form-group"><label>الاستقطاب (اختياري)</label><select id="in-ch-polar"><option value="H">أفقي (H)</option><option value="V">عمودي (V)</option></select></div>
+                    <div class="form-group"><label>معدل الترميز (اختياري)</label><input type="text" id="in-ch-rate" placeholder="27500"></div>
                     <button class="btn-action" onclick="saveChannelCard()">حفظ الكارت لهذه المباراة</button>
                 </div>
                 <div class="form-section">
-                    <h4>القنوات المضافة لهذه المباراة</h4>
+                    <h4>القنوات المضافة لهذه المباراة (تعديل / حذف)</h4>
                     <div class="cards-manage-list" id="manage-channels-list"></div>
                 </div>
                 <button class="btn-action" style="background:var(--accent-red);" onclick="closeModal('ch')">إغلاق</button>
@@ -279,28 +371,29 @@
     <div id="ts-admin-modal" class="modal-overlay">
         <div class="modal-box">
             <div id="ts-admin-login">
-                <h3 style="margin-bottom:15px; text-align:center;">إدارة التايم شيفت لهذه المباراة</h3>
+                <h3 style="margin-bottom:12px; text-align:center; font-size:1rem;">إدارة التايم شيفت لهذه المباراة</h3>
                 <div class="form-group"><input type="password" id="ts-pass-code" placeholder="كلمة المرور (108)"></div>
                 <button class="btn-action" style="background:var(--accent-green);" onclick="checkTsPassword()">دخول</button>
             </div>
             <div id="ts-admin-form" style="display:none;">
-                <h3 style="margin-bottom:15px; color:var(--accent-green);">إضافة كارت تايم شيفت جديد</h3>
+                <h3 style="margin-bottom:12px; color:var(--accent-green); font-size:1rem;" id="ts-form-title">إضافة كارت تايم شيفت جديد</h3>
+                <input type="hidden" id="edit-ts-id" value="">
                 <div class="form-section">
-                    <div class="form-group"><label>رابط الصورة (16:9)</label><input type="text" id="in-ts-img" placeholder="رابط الصورة"></div>
-                    <div class="form-group"><label>اسم القناة</label><input type="text" id="in-ts-ch-name" placeholder="beIN SPORTS MAX 1"></div>
-                    <div class="form-group"><label>القمر</label><input type="text" id="in-ts-sat" placeholder="Nilesat 7.0W"></div>
-                    <div class="form-group"><label>التردد</label><input type="text" id="in-ts-freq" placeholder="11054"></div>
-                    <div class="form-group"><label>الاستقطاب</label><select id="in-ts-polar"><option value="H">أفقي (H)</option><option value="V">عمودي (V)</option></select></div>
-                    <div class="form-group"><label>معدل الترميز</label><input type="text" id="in-ts-rate" placeholder="27500"></div>
-                    <div class="form-group"><label>القناة الصوتية</label><input type="text" id="in-ts-audio" placeholder="Audio 1"></div>
-                    <div class="form-group"><label>فارق التايم شيفت (بالثواني)</label><input type="number" id="in-ts-delay" placeholder="5"></div>
-                    <div class="form-group"><label>اسم المعلق</label><input type="text" id="in-ts-comm" placeholder="حفيظ دراجي"></div>
-                    <div class="form-group"><label>اسم الريسيفر</label><input type="text" id="in-ts-receiver" placeholder="Senator Captain 15"></div>
-                    <div class="form-group"><label>ريسيفرات تحمل نفس التايم شيفت (افصل بفاصلة ,)</label><input type="text" id="in-ts-same-receivers" placeholder="Nova I-Mac, Joker Premium"></div>
+                    <div class="form-group"><label>رابط الصورة 16:9 (اختياري)</label><input type="text" id="in-ts-img" placeholder="رابط الصورة"></div>
+                    <div class="form-group"><label>اسم القناة (اختياري)</label><input type="text" id="in-ts-ch-name" placeholder="beIN SPORTS MAX 1"></div>
+                    <div class="form-group"><label>القمر (اختياري)</label><input type="text" id="in-ts-sat" placeholder="Nilesat 7.0W"></div>
+                    <div class="form-group"><label>التردد (اختياري)</label><input type="text" id="in-ts-freq" placeholder="11054"></div>
+                    <div class="form-group"><label>الاستقطاب (اختياري)</label><select id="in-ts-polar"><option value="H">أفقي (H)</option><option value="V">عمودي (V)</option></select></div>
+                    <div class="form-group"><label>معدل الترميز (اختياري)</label><input type="text" id="in-ts-rate" placeholder="27500"></div>
+                    <div class="form-group"><label>القناة الصوتية (اختياري)</label><input type="text" id="in-ts-audio" placeholder="Audio 1"></div>
+                    <div class="form-group"><label>فارق التايم شيفت بالثواني (اختياري)</label><input type="number" id="in-ts-delay" placeholder="5"></div>
+                    <div class="form-group"><label>اسم المعلق (اختياري)</label><input type="text" id="in-ts-comm" placeholder="حفيظ دراجي"></div>
+                    <div class="form-group"><label>اسم الريسيفر (اختياري)</label><input type="text" id="in-ts-receiver" placeholder="Senator Captain 15"></div>
+                    <div class="form-group"><label>ريسيفرات نفس التايم شيفت (اختياري)</label><input type="text" id="in-ts-same-receivers" placeholder="Nova I-Mac, Joker Premium"></div>
                     <button class="btn-action" style="background:var(--accent-green);" onclick="saveTimeShiftCard()">حفظ الكارت لهذه المباراة</button>
                 </div>
                 <div class="form-section">
-                    <h4>كروت التايم شيفت لهذه المباراة</h4>
+                    <h4>كروت التايم شيفت لهذه المباراة (تعديل / حذف)</h4>
                     <div class="cards-manage-list" id="manage-timeshift-list"></div>
                 </div>
                 <button class="btn-action" style="background:var(--accent-red);" onclick="closeModal('ts')">إغلاق</button>
@@ -313,7 +406,6 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // مفاتيح Firebase الخاصة بحسابك
         const firebaseConfig = {
             apiKey: "AIzaSyC_CKgSs7ajVzcCdJyqLQfqrXPl7DjJPo0",
             authDomain: "gosat-plus-2.firebaseapp.com",
@@ -327,22 +419,19 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // التخزين السحابي
         window.todayDateText = "الأربعاء، 12 أغسطس 2026";
         window.activeMatchId = null;
         window.matchesData = [];
 
-        // مزامنة فورية وحفظ سحابي
         const docRef = doc(db, "gosat_data", "main_data");
 
-        // الاستماع الفوري للتغييرات من السيرفر
         onSnapshot(docRef, (snapshot) => {
             if (snapshot.exists()) {
                 const data = snapshot.data();
                 window.todayDateText = data.todayDateText || "الأربعاء، 12 أغسطس 2026";
                 window.matchesData = data.matchesData || [];
             } else {
-                saveDataToCloud(); // إنشاء السجل الأول
+                saveDataToCloud();
             }
             renderMatchesList();
             if (window.activeMatchId) renderMatchDetails();
@@ -361,7 +450,6 @@
     </script>
 
     <script>
-        // دعم زر الرجوع لجميع الهواتف
         window.addEventListener('popstate', function(event) {
             showHomeView(false);
         });
@@ -392,23 +480,23 @@
             container.innerHTML = window.matchesData.map(m => `
                 <div class="match-card-item" onclick="openMatchDetails(${m.id})">
                     <div style="text-align:center;">
-                        <span class="match-card-tournament">${m.tournament}</span>
+                        <span class="match-card-tournament">${m.tournament || 'مباراة اليوم'}</span>
                     </div>
                     <div class="teams-vs-box">
                         <div class="team-item">
-                            <div class="team-logo-circle"><img src="${m.t1Img}" alt="${m.t1Name}"></div>
-                            <div class="team-name">${m.t1Name}</div>
+                            <div class="team-logo-circle"><img src="${m.t1Img || 'https://via.placeholder.com/60?text=T1'}" alt="${m.t1Name || 'الفريق 1'}"></div>
+                            <div class="team-name">${m.t1Name || 'الفريق 1'}</div>
                         </div>
                         <div class="time-box">
-                            <div class="match-time-badge">${m.time}</div>
+                            <div class="match-time-badge">${m.time || '00:00'}</div>
                         </div>
                         <div class="team-item">
-                            <div class="team-logo-circle"><img src="${m.t2Img}" alt="${m.t2Name}"></div>
-                            <div class="team-name">${m.t2Name}</div>
+                            <div class="team-logo-circle"><img src="${m.t2Img || 'https://via.placeholder.com/60?text=T2'}" alt="${m.t2Name || 'الفريق 2'}"></div>
+                            <div class="team-name">${m.t2Name || 'الفريق 2'}</div>
                         </div>
                     </div>
                 </div>
-            `).join('') || '<div style="text-align:center; padding:20px; color:var(--text-gray);">لا توجد مباريات مضافة اليوم</div>';
+            `).join('') || '<div style="text-align:center; padding:15px; color:var(--text-gray); font-size:0.85rem;">لا توجد مباريات مضافة اليوم</div>';
         }
 
         function renderMatchDetails() {
@@ -417,21 +505,21 @@
 
             const headerHtml = `
                 <div class="match-top-info">
-                    <div class="match-tournament">${m.tournament}</div>
+                    <div class="match-tournament" style="color:var(--accent-gold); font-weight:700; font-size:0.85rem; margin-bottom:4px;">${m.tournament || 'مباراة اليوم'}</div>
                     <div class="match-date-time">
                         <span><i class="fa-regular fa-calendar"></i> ${window.todayDateText}</span>
-                        <span><i class="fa-regular fa-clock"></i> ${m.time}</span>
+                        <span><i class="fa-regular fa-clock"></i> ${m.time || '00:00'}</span>
                     </div>
                 </div>
                 <div class="teams-vs-box">
-                    <div class="team-item"><div class="team-logo-circle"><img src="${m.t1Img}"></div><div class="team-name">${m.t1Name}</div></div>
-                    <div style="font-weight:800; color:var(--accent-red);">VS</div>
-                    <div class="team-item"><div class="team-logo-circle"><img src="${m.t2Img}"></div><div class="team-name">${m.t2Name}</div></div>
+                    <div class="team-item"><div class="team-logo-circle"><img src="${m.t1Img || 'https://via.placeholder.com/60?text=T1'}"></div><div class="team-name">${m.t1Name || 'الفريق 1'}</div></div>
+                    <div style="font-weight:800; color:var(--accent-red); font-size:0.85rem;">VS</div>
+                    <div class="team-item"><div class="team-logo-circle"><img src="${m.t2Img || 'https://via.placeholder.com/60?text=T2'}"></div><div class="team-name">${m.t2Name || 'الفريق 2'}</div></div>
                 </div>
                 <div class="match-extra-details">
-                    <div class="mini-detail-card"><i class="fa-solid fa-microphone" style="color:var(--accent-blue);"></i><div class="title">المعلق</div><div class="val">${m.comm}</div></div>
-                    <div class="mini-detail-card"><i class="fa-solid fa-tv" style="color:var(--accent-green);"></i><div class="title">القناة الناقلة</div><div class="val">${m.channels[0]?.name || 'غير محدد'}</div></div>
-                    <div class="mini-detail-card"><i class="fa-solid fa-server" style="color:var(--accent-gold);"></i><div class="title">اسم السيرفر</div><div class="val" style="color:var(--accent-gold);">GOSAT PLUS</div></div>
+                    <div class="mini-detail-card"><i class="fa-solid fa-microphone" style="color:var(--accent-blue);"></i><div class="title">المعلق</div><div class="val">${m.comm || 'غير محدد'}</div></div>
+                    <div class="mini-detail-card"><i class="fa-solid fa-tv" style="color:var(--accent-green);"></i><div class="title">القناة الناقلة</div><div class="val">${m.mainChannel || 'غير محدد'}</div></div>
+                    <div class="mini-detail-card"><i class="fa-solid fa-sliders" style="color:var(--accent-gold);"></i><div class="title">القناة الصوتية</div><div class="val" style="color:var(--accent-gold);">${m.audioTrack || 'غير محدد'}</div></div>
                 </div>
             `;
 
@@ -443,43 +531,43 @@
                 <div class="sat-card">
                     <div class="card-header" onclick="toggleCard('ch-body-${c.id}', 'ch-arrow-${c.id}')">
                         <div class="channel-title">
-                            <div class="logo-box"><img src="${c.img}"></div>
-                            <span>${c.name}</span>
+                            <div class="logo-box"><img src="${c.img || 'https://via.placeholder.com/50?text=TV'}"></div>
+                            <span>${c.name || 'قناة ناقلة'}</span>
                         </div>
                         <i class="fa-solid fa-chevron-down arrow-icon" id="ch-arrow-${c.id}"></i>
                     </div>
                     <div class="card-body" id="ch-body-${c.id}">
-                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-blue"><i class="fa-solid fa-satellite"></i></div>القمر :</div><div class="info-value">${c.sat}</div></div>
-                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-green"><i class="fa-solid fa-tower-broadcast"></i></div>التردد :</div><div class="info-value val-green">${c.freq}</div></div>
-                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-blue"><i class="fa-solid fa-arrows-up-down-left-right"></i></div>الاستقطاب :</div><div class="info-value">${c.polar}</div></div>
-                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-green"><i class="fa-solid fa-gauge-high"></i></div>معدل الترميز :</div><div class="info-value val-green">${c.rate}</div></div>
+                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-blue"><i class="fa-solid fa-satellite"></i></div>القمر :</div><div class="info-value">${c.sat || 'غير محدد'}</div></div>
+                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-green"><i class="fa-solid fa-tower-broadcast"></i></div>التردد :</div><div class="info-value val-green">${c.freq || 'غير محدد'}</div></div>
+                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-blue"><i class="fa-solid fa-arrows-up-down-left-right"></i></div>الاستقطاب :</div><div class="info-value">${c.polar || 'H'}</div></div>
+                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-green"><i class="fa-solid fa-gauge-high"></i></div>معدل الترميز :</div><div class="info-value val-green">${c.rate || '27500'}</div></div>
                     </div>
                 </div>
-            `).join('') || '<div style="color:var(--text-gray); text-align:center; padding:15px;">لا توجد قنوات ناقلة مضافة لهذه المباراة</div>';
+            `).join('') || '<div style="color:var(--text-gray); text-align:center; padding:12px; font-size:0.8rem;">لا توجد قنوات ناقلة مضافة لهذه المباراة</div>';
 
             const tsContainer = document.getElementById('timeshift-cards-container');
             tsContainer.innerHTML = m.timeshifts.map(c => {
                 const sameList = c.sameReceivers ? c.sameReceivers.split(',').map(r => `<span class="receiver-tag">${r.trim()}</span>`).join('') : '';
                 return `
                 <div class="sat-card">
-                    <div class="media-box-16-9"><img src="${c.img}"></div>
+                    <div class="media-box-16-9"><img src="${c.img || 'https://via.placeholder.com/600x337?text=16:9+Image'}"></div>
                     <div class="channel-name-banner" onclick="toggleCard('ts-body-${c.id}', 'ts-arrow-${c.id}')">
-                        <span>${c.chName}</span>
+                        <span>${c.chName || 'قناة التايم شيفت'}</span>
                         <i class="fa-solid fa-chevron-down arrow-icon" id="ts-arrow-${c.id}"></i>
                     </div>
                     <div class="card-body" id="ts-body-${c.id}">
-                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-blue"><i class="fa-solid fa-satellite"></i></div>القمر :</div><div class="info-value">${c.sat}</div></div>
-                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-green"><i class="fa-solid fa-tower-broadcast"></i></div>التردد :</div><div class="info-value val-green">${c.freq}</div></div>
-                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-blue"><i class="fa-solid fa-arrows-up-down-left-right"></i></div>الاستقطاب :</div><div class="info-value">${c.polar}</div></div>
-                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-green"><i class="fa-solid fa-gauge-high"></i></div>معدل الترميز :</div><div class="info-value val-green">${c.rate}</div></div>
-                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-gold"><i class="fa-solid fa-sliders"></i></div>القناة الصوتية :</div><div class="info-value val-gold">${c.audio}</div></div>
-                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-green"><i class="fa-solid fa-hourglass-half"></i></div>التايم شيفت :</div><div class="info-value val-green">${c.delay} ثانية</div></div>
-                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-blue"><i class="fa-solid fa-microphone"></i></div>المعلق :</div><div class="info-value">${c.comm}</div></div>
+                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-blue"><i class="fa-solid fa-satellite"></i></div>القمر :</div><div class="info-value">${c.sat || 'غير محدد'}</div></div>
+                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-green"><i class="fa-solid fa-tower-broadcast"></i></div>التردد :</div><div class="info-value val-green">${c.freq || 'غير محدد'}</div></div>
+                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-blue"><i class="fa-solid fa-arrows-up-down-left-right"></i></div>الاستقطاب :</div><div class="info-value">${c.polar || 'H'}</div></div>
+                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-green"><i class="fa-solid fa-gauge-high"></i></div>معدل الترميز :</div><div class="info-value val-green">${c.rate || '27500'}</div></div>
+                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-gold"><i class="fa-solid fa-sliders"></i></div>القناة الصوتية :</div><div class="info-value val-gold">${c.audio || 'غير محدد'}</div></div>
+                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-green"><i class="fa-solid fa-hourglass-half"></i></div>التايم شيفت :</div><div class="info-value val-green">${c.delay || '0'} ثانية</div></div>
+                        <div class="info-row"><div class="info-label"><div class="icon-badge icon-blue"><i class="fa-solid fa-microphone"></i></div>المعلق :</div><div class="info-value">${c.comm || 'غير محدد'}</div></div>
                         <div class="info-row"><div class="info-label"><div class="icon-badge icon-gold"><i class="fa-solid fa-tv"></i></div>اسم الريسيفر :</div><div class="info-value val-gold">${c.receiver || 'غير محدد'}</div></div>
                     </div>
                 </div>
                 ${sameList ? `<div class="same-timeshift-receivers-box"><div class="same-timeshift-title"><i class="fa-solid fa-microchip"></i> ريسيفرات تحمل نفس التايم شيفت:</div><div class="receivers-tags">${sameList}</div></div>` : ''}
-            `}).join('') || '<div style="color:var(--text-gray); text-align:center; padding:15px;">لا يوجد تايم شيفت مضاف لهذه المباراة</div>';
+            `}).join('') || '<div style="color:var(--text-gray); text-align:center; padding:12px; font-size:0.8rem;">لا يوجد تايم شيفت مضاف لهذه المباراة</div>';
         }
 
         function toggleCard(bodyId, arrowId) {
@@ -567,19 +655,81 @@
             }
         }
 
-        function addMatch() {
-            const tournament = document.getElementById('in-m-tournament').value || 'بطولة جديدة';
-            const t1Name = document.getElementById('in-m-t1-name').value || 'فريق 1';
-            const t1Img = document.getElementById('in-m-t1-img').value || 'https://via.placeholder.com/60?text=T1';
-            const t2Name = document.getElementById('in-m-t2-name').value || 'فريق 2';
-            const t2Img = document.getElementById('in-m-t2-img').value || 'https://via.placeholder.com/60?text=T2';
-            const time = document.getElementById('in-m-time').value || '00:00';
-            const comm = document.getElementById('in-m-comm').value || 'المعلق';
+        function addOrUpdateMatch() {
+            const editId = document.getElementById('edit-match-id').value;
+            const tournament = document.getElementById('in-m-tournament').value;
+            const t1Name = document.getElementById('in-m-t1-name').value;
+            const t1Img = document.getElementById('in-m-t1-img').value;
+            const t2Name = document.getElementById('in-m-t2-name').value;
+            const t2Img = document.getElementById('in-m-t2-img').value;
+            const time = document.getElementById('in-m-time').value;
+            const comm = document.getElementById('in-m-comm').value;
+            const mainChannel = document.getElementById('in-m-main-channel').value;
+            const audioTrack = document.getElementById('in-m-audio-track').value;
 
-            window.matchesData.push({ id: Date.now(), tournament, t1Name, t1Img, t2Name, t2Img, time, comm, channels: [], timeshifts: [] });
+            if (editId) {
+                const match = window.matchesData.find(m => m.id == editId);
+                if (match) {
+                    if(tournament) match.tournament = tournament;
+                    if(t1Name) match.t1Name = t1Name;
+                    if(t1Img) match.t1Img = t1Img;
+                    if(t2Name) match.t2Name = t2Name;
+                    if(t2Img) match.t2Img = t2Img;
+                    if(time) match.time = time;
+                    if(comm) match.comm = comm;
+                    if(mainChannel) match.mainChannel = mainChannel;
+                    if(audioTrack) match.audioTrack = audioTrack;
+                }
+                document.getElementById('edit-match-id').value = '';
+                document.getElementById('match-form-title').innerText = 'إضافة مباراة جديدة اليوم (جميع الخانات اختيارية)';
+            } else {
+                window.matchesData.push({
+                    id: Date.now(),
+                    tournament: tournament || 'مباراة اليوم',
+                    t1Name: t1Name || 'الفريق 1',
+                    t1Img: t1Img || 'https://via.placeholder.com/60?text=T1',
+                    t2Name: t2Name || 'الفريق 2',
+                    t2Img: t2Img || 'https://via.placeholder.com/60?text=T2',
+                    time: time || '00:00',
+                    comm: comm || 'غير محدد',
+                    mainChannel: mainChannel || 'غير محدد',
+                    audioTrack: audioTrack || 'غير محدد',
+                    channels: [],
+                    timeshifts: []
+                });
+            }
+
             window.saveDataToCloud();
+
+            document.getElementById('in-m-tournament').value = '';
+            document.getElementById('in-m-t1-name').value = '';
+            document.getElementById('in-m-t1-img').value = '';
+            document.getElementById('in-m-t2-name').value = '';
+            document.getElementById('in-m-t2-img').value = '';
+            document.getElementById('in-m-time').value = '';
+            document.getElementById('in-m-comm').value = '';
+            document.getElementById('in-m-main-channel').value = '';
+            document.getElementById('in-m-audio-track').value = '';
+
             renderHomeManageList();
-            alert('تمت إضافة المباراة سحابياً!');
+            alert('تم حفظ المباراة سحابياً بنجاح!');
+        }
+
+        function editMatch(id) {
+            const m = window.matchesData.find(item => item.id == id);
+            if (m) {
+                document.getElementById('edit-match-id').value = m.id;
+                document.getElementById('in-m-tournament').value = m.tournament || '';
+                document.getElementById('in-m-t1-name').value = m.t1Name || '';
+                document.getElementById('in-m-t1-img').value = m.t1Img || '';
+                document.getElementById('in-m-t2-name').value = m.t2Name || '';
+                document.getElementById('in-m-t2-img').value = m.t2Img || '';
+                document.getElementById('in-m-time').value = m.time || '';
+                document.getElementById('in-m-comm').value = m.comm || '';
+                document.getElementById('in-m-main-channel').value = m.mainChannel || '';
+                document.getElementById('in-m-audio-track').value = m.audioTrack || '';
+                document.getElementById('match-form-title').innerText = 'تعديل بيانات المباراة الحالية';
+            }
         }
 
         function deleteMatch(id) {
@@ -594,30 +744,78 @@
             const container = document.getElementById('manage-matches-list');
             container.innerHTML = window.matchesData.map(m => `
                 <div class="manage-item">
-                    <span>${m.t1Name} VS ${m.t2Name}</span>
-                    <button class="manage-item-btn btn-delete" onclick="deleteMatch(${m.id})">حذف 🗑️</button>
+                    <span>${m.t1Name || 'فريق 1'} VS ${m.t2Name || 'فريق 2'}</span>
+                    <div>
+                        <button class="manage-item-btn btn-edit" onclick="editMatch(${m.id})">تعديل ✏️</button>
+                        <button class="manage-item-btn btn-delete" onclick="deleteMatch(${m.id})">حذف 🗑️</button>
+                    </div>
                 </div>
-            `).join('');
+            `).join('') || '<div style="color:var(--text-gray); font-size:0.8rem;">لا توجد مباريات مضافة</div>';
         }
 
+        /* إضافة أو تعديل قناة ناقلة */
         function saveChannelCard() {
             const m = window.matchesData.find(item => item.id === window.activeMatchId);
             if (!m) return;
 
-            const name = document.getElementById('in-ch-name').value || 'قناة جديدة';
-            const img = document.getElementById('in-ch-img').value || 'https://via.placeholder.com/50?text=TV';
-            const sat = document.getElementById('in-ch-sat').value || 'Nilesat 7.0W';
-            const freq = document.getElementById('in-ch-freq').value || '11054';
+            const editChId = document.getElementById('edit-ch-id').value;
+            const name = document.getElementById('in-ch-name').value;
+            const img = document.getElementById('in-ch-img').value;
+            const sat = document.getElementById('in-ch-sat').value;
+            const freq = document.getElementById('in-ch-freq').value;
             const polar = document.getElementById('in-ch-polar').value;
-            const rate = document.getElementById('in-ch-rate').value || '27500';
+            const rate = document.getElementById('in-ch-rate').value;
 
-            m.channels.push({ id: Date.now(), name, img, sat, freq, polar, rate });
+            if (editChId) {
+                const ch = m.channels.find(c => c.id == editChId);
+                if (ch) {
+                    if (name) ch.name = name;
+                    if (img) ch.img = img;
+                    if (sat) ch.sat = sat;
+                    if (freq) ch.freq = freq;
+                    if (polar) ch.polar = polar;
+                    if (rate) ch.rate = rate;
+                }
+                document.getElementById('edit-ch-id').value = '';
+                document.getElementById('ch-form-title').innerText = 'إضافة قناة ناقلة جديدة';
+            } else {
+                m.channels.push({
+                    id: Date.now(),
+                    name: name || 'قناة ناقلة',
+                    img: img || 'https://via.placeholder.com/50?text=TV',
+                    sat: sat || 'غير محدد',
+                    freq: freq || 'غير محدد',
+                    polar: polar || 'H',
+                    rate: rate || '27500'
+                });
+            }
+
             window.saveDataToCloud();
 
-            document.getElementById('in-ch-name').value = ''; document.getElementById('in-ch-img').value = '';
-            document.getElementById('in-ch-sat').value = ''; document.getElementById('in-ch-freq').value = '';
+            document.getElementById('in-ch-name').value = '';
+            document.getElementById('in-ch-img').value = '';
+            document.getElementById('in-ch-sat').value = '';
+            document.getElementById('in-ch-freq').value = '';
+            document.getElementById('in-ch-rate').value = '';
 
             renderChManageList();
+            alert('تم حفظ القناة الناقلة بنجاح!');
+        }
+
+        function editChCard(id) {
+            const m = window.matchesData.find(item => item.id === window.activeMatchId);
+            if (!m) return;
+            const ch = m.channels.find(c => c.id == id);
+            if (ch) {
+                document.getElementById('edit-ch-id').value = ch.id;
+                document.getElementById('in-ch-name').value = ch.name || '';
+                document.getElementById('in-ch-img').value = ch.img || '';
+                document.getElementById('in-ch-sat').value = ch.sat || '';
+                document.getElementById('in-ch-freq').value = ch.freq || '';
+                document.getElementById('in-ch-polar').value = ch.polar || 'H';
+                document.getElementById('in-ch-rate').value = ch.rate || '';
+                document.getElementById('ch-form-title').innerText = 'تعديل القناة الناقلة الحالية';
+            }
         }
 
         function deleteChCard(id) {
@@ -636,34 +834,102 @@
             container.innerHTML = m.channels.map(c => `
                 <div class="manage-item">
                     <span>${c.name} (${c.freq})</span>
-                    <button class="manage-item-btn btn-delete" onclick="deleteChCard(${c.id})">حذف 🗑️</button>
+                    <div>
+                        <button class="manage-item-btn btn-edit" onclick="editChCard(${c.id})">تعديل ✏️</button>
+                        <button class="manage-item-btn btn-delete" onclick="deleteChCard(${c.id})">حذف 🗑️</button>
+                    </div>
                 </div>
             `).join('') || '<div style="color:var(--text-gray); font-size:0.8rem;">لا توجد كروت لهذه المباراة</div>';
         }
 
+        /* إضافة أو تعديل كارت التايم شيفت */
         function saveTimeShiftCard() {
             const m = window.matchesData.find(item => item.id === window.activeMatchId);
             if (!m) return;
 
-            const img = document.getElementById('in-ts-img').value || 'https://via.placeholder.com/600x337?text=16:9+Image';
-            const chName = document.getElementById('in-ts-ch-name').value || 'قناة التايم شيفت';
-            const sat = document.getElementById('in-ts-sat').value || 'Nilesat 7.0W';
-            const freq = document.getElementById('in-ts-freq').value || '11054';
+            const editTsId = document.getElementById('edit-ts-id').value;
+            const img = document.getElementById('in-ts-img').value;
+            const chName = document.getElementById('in-ts-ch-name').value;
+            const sat = document.getElementById('in-ts-sat').value;
+            const freq = document.getElementById('in-ts-freq').value;
             const polar = document.getElementById('in-ts-polar').value;
-            const rate = document.getElementById('in-ts-rate').value || '27500';
-            const audio = document.getElementById('in-ts-audio').value || 'Audio 1';
-            const delay = document.getElementById('in-ts-delay').value || '0';
-            const comm = document.getElementById('in-ts-comm').value || 'معلق التايم شيفت';
-            const receiver = document.getElementById('in-ts-receiver').value || 'غير محدد';
-            const sameReceivers = document.getElementById('in-ts-same-receivers').value || '';
+            const rate = document.getElementById('in-ts-rate').value;
+            const audio = document.getElementById('in-ts-audio').value;
+            const delay = document.getElementById('in-ts-delay').value;
+            const comm = document.getElementById('in-ts-comm').value;
+            const receiver = document.getElementById('in-ts-receiver').value;
+            const sameReceivers = document.getElementById('in-ts-same-receivers').value;
 
-            m.timeshifts.push({ id: Date.now(), img, chName, sat, freq, polar, rate, audio, delay, comm, receiver, sameReceivers });
+            if (editTsId) {
+                const ts = m.timeshifts.find(c => c.id == editTsId);
+                if (ts) {
+                    if (img) ts.img = img;
+                    if (chName) ts.chName = chName;
+                    if (sat) ts.sat = sat;
+                    if (freq) ts.freq = freq;
+                    if (polar) ts.polar = polar;
+                    if (rate) ts.rate = rate;
+                    if (audio) ts.audio = audio;
+                    if (delay) ts.delay = delay;
+                    if (comm) ts.comm = comm;
+                    if (receiver) ts.receiver = receiver;
+                    if (sameReceivers !== undefined && sameReceivers !== null && sameReceivers !== '') ts.sameReceivers = sameReceivers;
+                }
+                document.getElementById('edit-ts-id').value = '';
+                document.getElementById('ts-form-title').innerText = 'إضافة كارت تايم شيفت جديد';
+            } else {
+                m.timeshifts.push({
+                    id: Date.now(),
+                    img: img || 'https://via.placeholder.com/600x337?text=16:9+Image',
+                    chName: chName || 'قناة التايم شيفت',
+                    sat: sat || 'غير محدد',
+                    freq: freq || 'غير محدد',
+                    polar: polar || 'H',
+                    rate: rate || '27500',
+                    audio: audio || 'غير محدد',
+                    delay: delay || '0',
+                    comm: comm || 'غير محدد',
+                    receiver: receiver || 'غير محدد',
+                    sameReceivers: sameReceivers || ''
+                });
+            }
+
             window.saveDataToCloud();
 
-            document.getElementById('in-ts-img').value = ''; document.getElementById('in-ts-ch-name').value = '';
-            document.getElementById('in-ts-sat').value = ''; document.getElementById('in-ts-freq').value = '';
+            document.getElementById('in-ts-img').value = '';
+            document.getElementById('in-ts-ch-name').value = '';
+            document.getElementById('in-ts-sat').value = '';
+            document.getElementById('in-ts-freq').value = '';
+            document.getElementById('in-ts-rate').value = '';
+            document.getElementById('in-ts-audio').value = '';
+            document.getElementById('in-ts-delay').value = '';
+            document.getElementById('in-ts-comm').value = '';
+            document.getElementById('in-ts-receiver').value = '';
+            document.getElementById('in-ts-same-receivers').value = '';
 
             renderTsManageList();
+            alert('تم حفظ كارت التايم شيفت بنجاح!');
+        }
+
+        function editTsCard(id) {
+            const m = window.matchesData.find(item => item.id === window.activeMatchId);
+            if (!m) return;
+            const ts = m.timeshifts.find(c => c.id == id);
+            if (ts) {
+                document.getElementById('edit-ts-id').value = ts.id;
+                document.getElementById('in-ts-img').value = ts.img || '';
+                document.getElementById('in-ts-ch-name').value = ts.chName || '';
+                document.getElementById('in-ts-sat').value = ts.sat || '';
+                document.getElementById('in-ts-freq').value = ts.freq || '';
+                document.getElementById('in-ts-polar').value = ts.polar || 'H';
+                document.getElementById('in-ts-rate').value = ts.rate || '';
+                document.getElementById('in-ts-audio').value = ts.audio || '';
+                document.getElementById('in-ts-delay').value = ts.delay || '';
+                document.getElementById('in-ts-comm').value = ts.comm || '';
+                document.getElementById('in-ts-receiver').value = ts.receiver || '';
+                document.getElementById('in-ts-same-receivers').value = ts.sameReceivers || '';
+                document.getElementById('ts-form-title').innerText = 'تعديل كارت التايم شيفت الحالي';
+            }
         }
 
         function deleteTsCard(id) {
@@ -682,7 +948,10 @@
             container.innerHTML = m.timeshifts.map(c => `
                 <div class="manage-item">
                     <span>${c.chName} (${c.delay} ثانية)</span>
-                    <button class="manage-item-btn btn-delete" onclick="deleteTsCard(${c.id})">حذف 🗑️</button>
+                    <div>
+                        <button class="manage-item-btn btn-edit" onclick="editTsCard(${c.id})">تعديل ✏️</button>
+                        <button class="manage-item-btn btn-delete" onclick="deleteTsCard(${c.id})">حذف 🗑️</button>
+                    </div>
                 </div>
             `).join('') || '<div style="color:var(--text-gray); font-size:0.8rem;">لا توجد كروت لهذه المباراة</div>';
         }
