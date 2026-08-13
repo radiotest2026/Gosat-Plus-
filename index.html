@@ -28,7 +28,6 @@
         * { box-sizing: border-box; font-family: 'Cairo', sans-serif; margin: 0; padding: 0; }
         body { background-color: var(--bg-main); color: var(--text-white); padding-bottom: 30px; min-height: 100vh; }
 
-        /* تثبيت الهيدر العلوي */
         header {
             position: sticky;
             top: 0;
@@ -83,7 +82,6 @@
             100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(29, 155, 240, 0.4)); }
         }
 
-        /* الشريط الأسفل للهيدر: شيرنج • صوتيات • ترجمة */
         .header-services-row {
             display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 2px;
             font-size: 0.72rem; font-weight: 700; color: var(--text-gray);
@@ -103,10 +101,9 @@
 
         .container { max-width: 520px; margin: 0 auto; padding: 0 10px; }
 
-        /* البوابة الرئيسية */
         .date-banner {
             text-align: center; background: var(--card-bg); border: 1px solid var(--card-border);
-            border-radius: 10px; padding: 8px 10px; margin: 12px 0; cursor: pointer; user-select: none;
+            border-radius: 10px; padding: 8px 10px; margin: 12px 0; user-select: none;
         }
         .date-banner h3 { color: var(--accent-gold); font-size: 0.95rem; }
         .date-banner p { color: var(--text-gray); font-size: 0.75rem; }
@@ -137,7 +134,6 @@
             padding: 3px 9px; border-radius: 14px; border: 1px solid var(--accent-green);
         }
 
-        /* شاشة التفاصيل */
         .back-btn {
             background: #1e293b; color: var(--text-white); border: 1px solid var(--card-border);
             padding: 6px 12px; border-radius: 6px; font-size: 0.82rem; font-weight: 700; cursor: pointer; margin-top: 10px;
@@ -174,7 +170,6 @@
         .mini-detail-card .title { font-size: 0.65rem; color: var(--text-gray); }
         .mini-detail-card .val { font-size: 0.75rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        /* الكروت وتعديل مربع لوجو القناة */
         .sat-card {
             background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px;
             overflow: hidden; margin-bottom: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.25);
@@ -189,36 +184,16 @@
         .channel-title { display: flex; align-items: center; gap: 10px; }
         
         .logo-box {
-            width: 52px;
-            height: 52px;
-            background: #1e293b;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border: 1px solid var(--card-border);
-            flex-shrink: 0;
-            padding: 0;
+            width: 52px; height: 52px; background: #1e293b; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+            border: 1px solid var(--card-border); flex-shrink: 0; padding: 0;
         }
-        .logo-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            border-radius: 9px;
-            transition: transform 0.3s ease;
-        }
-        .logo-box:hover img {
-            transform: scale(1.05);
-        }
+        .logo-box img { width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 9px; }
         
         .arrow-icon { color: var(--text-gray); font-size: 0.8rem; transition: transform 0.3s; }
         .arrow-icon.open { transform: rotate(180deg); }
 
-        .card-body {
-            padding: 10px 12px; display: none; flex-direction: column; gap: 8px; border-top: 1px solid var(--card-border);
-        }
+        .card-body { padding: 10px 12px; display: none; flex-direction: column; gap: 8px; border-top: 1px solid var(--card-border); }
         .card-body.active { display: flex; }
         
         .info-row { display: flex; align-items: center; justify-content: space-between; font-size: 0.82rem; }
@@ -231,36 +206,14 @@
         .val-green { color: var(--accent-green); }
         .val-gold { color: var(--accent-gold); }
 
-        .same-timeshift-receivers-box {
-            background: #0f172a; border: 1px solid var(--card-border); border-radius: 10px; padding: 8px 10px; margin-bottom: 12px;
-        }
+        .same-timeshift-receivers-box { background: #0f172a; border: 1px solid var(--card-border); border-radius: 10px; padding: 8px 10px; margin-bottom: 12px; }
         .same-timeshift-title { font-size: 0.75rem; color: var(--accent-gold); font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
         .receivers-tags { display: flex; flex-wrap: wrap; gap: 4px; }
         .receiver-tag { background: #1e293b; border: 1px solid var(--card-border); color: var(--text-white); font-size: 0.72rem; padding: 2px 8px; border-radius: 6px; font-weight: 600; }
-
-        /* اللوحات المخفية للأدمن */
-        .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 999; align-items: center; justify-content: center; padding: 12px;
-        }
-        .modal-box { background: #1e293b; border: 1px solid var(--card-border); width: 100%; max-width: 480px; border-radius: 14px; padding: 16px; max-height: 90vh; overflow-y: auto; }
-        .form-section { background: #0f172a; border: 1px solid var(--card-border); padding: 10px; border-radius: 8px; margin-bottom: 12px; }
-        .form-section h4 { margin-bottom: 8px; font-size: 0.85rem; }
-        .form-group { margin-bottom: 8px; }
-        .form-group label { display: block; font-size: 0.75rem; color: var(--text-gray); margin-bottom: 3px; }
-        .form-group input, .form-group select { width: 100%; padding: 7px; background: #1e293b; border: 1px solid var(--card-border); border-radius: 6px; color: white; font-size: 0.82rem; }
-        .btn-action { width: 100%; padding: 9px; background: var(--accent-blue); color: white; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; margin-top: 8px; font-size: 0.85rem; }
-
-        .cards-manage-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
-        .manage-item { background: #1e293b; border: 1px solid var(--card-border); padding: 6px 10px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.8rem; }
-        .manage-item-btn { padding: 3px 6px; border-radius: 4px; border: none; font-size: 0.7rem; font-weight: 700; cursor: pointer; margin-right: 3px; }
-        .btn-edit { background: var(--accent-gold); color: #000; }
-        .btn-delete { background: var(--accent-red); color: #fff; }
     </style>
 </head>
 <body>
 
-    <!-- الهيدر الموثق بالاسم والخدمات الجديدة -->
     <header>
         <div class="header-title-container">
             <i class="fa-solid fa-satellite-dish header-dish-icon"></i>
@@ -279,26 +232,26 @@
     </header>
 
     <div class="container">
-        <!-- ================= 1. البوابة الرئيسية ================= -->
+        <!-- البوابة الرئيسية -->
         <div id="home-view">
-            <div class="date-banner" onclick="handleDateClick()">
+            <div class="date-banner">
                 <h3 id="disp-today-date">جاري تحميل البيانات...</h3>
                 <p>مباريات اليوم - اضغط على مباراة لعرض القنوات والتايم شيفت</p>
             </div>
             <div id="matches-list-container"></div>
         </div>
 
-        <!-- ================= 2. شاشة تفاصيل المباراة ================= -->
+        <!-- شاشة تفاصيل المباراة -->
         <div id="details-view" style="display: none;">
             <button class="back-btn" onclick="showHomeView(true)">
                 <i class="fa-solid fa-arrow-right"></i> العودة لقائمة المباريات
             </button>
 
             <div class="tabs-container">
-                <button class="tab-btn active" id="tab-btn-channels" onclick="handleTabClick('ch', this)">
+                <button class="tab-btn active" id="tab-btn-channels" onclick="switchTab('channels-tab', this)">
                     <i class="fa-solid fa-tv"></i> القنوات الناقلة
                 </button>
-                <button class="tab-btn" id="tab-btn-timeshift" onclick="handleTabClick('ts', this)">
+                <button class="tab-btn" id="tab-btn-timeshift" onclick="switchTab('timeshift-tab', this)">
                     <i class="fa-solid fa-clock-rotate-left"></i> تايم شيفت
                 </button>
             </div>
@@ -317,111 +270,10 @@
         </div>
     </div>
 
-    <!-- ================= لوحة 1: إعدادات قائمة المباريات واليوم (108) ================= -->
-    <div id="home-admin-modal" class="modal-overlay">
-        <div class="modal-box">
-            <div id="home-admin-login">
-                <h3 style="margin-bottom:12px; text-align:center; font-size:1rem;">إدارة قائمة المباريات واليوم</h3>
-                <div class="form-group"><input type="password" id="home-pass-code" placeholder="كلمة المرور (108)"></div>
-                <button class="btn-action" onclick="checkHomePassword()">دخول</button>
-            </div>
-            <div id="home-admin-form" style="display:none;">
-                <h3 style="margin-bottom:12px; color:var(--accent-gold); font-size:1rem;">تعديل اليوم وإدارة المباريات</h3>
-                <div class="form-section">
-                    <h4>تعديل نص اليوم والتاريخ (اختياري)</h4>
-                    <div class="form-group"><input type="text" id="in-today-date" placeholder="الأربعاء، 12 أغسطس 2026"></div>
-                    <button class="btn-action" style="background:var(--accent-gold); color:#000;" onclick="saveTodayDate()">حفظ التاريخ</button>
-                </div>
-                <div class="form-section">
-                    <h4 id="match-form-title">إضافة مباراة جديدة اليوم (جميع الخانات اختيارية)</h4>
-                    <input type="hidden" id="edit-match-id" value="">
-                    <div class="form-group"><label>اسم البطولة (اختياري)</label><input type="text" id="in-m-tournament" placeholder="دوري أبطال أفريقيا"></div>
-                    <div class="form-group"><label>الفريق الأول (اختياري)</label><input type="text" id="in-m-t1-name" placeholder="الأهلي"></div>
-                    <div class="form-group"><label>لوجو الفريق الأول (اختياري)</label><input type="text" id="in-m-t1-img" placeholder="رابط URL"></div>
-                    <div class="form-group"><label>الفريق الثاني (اختياري)</label><input type="text" id="in-m-t2-name" placeholder="الزمالك"></div>
-                    <div class="form-group"><label>لوجو الفريق الثاني (اختياري)</label><input type="text" id="in-m-t2-img" placeholder="رابط URL"></div>
-                    <div class="form-group"><label>توقيت المباراة (اختياري)</label><input type="text" id="in-m-time" placeholder="09:00 مساءً"></div>
-                    <div class="form-group"><label>المعلق الرئيسي (اختياري)</label><input type="text" id="in-m-comm" placeholder="عصام الشوالي"></div>
-                    <div class="form-group"><label>القناة الناقلة الرئيسية (اختياري)</label><input type="text" id="in-m-main-channel" placeholder="beIN Sports HD 1"></div>
-                    <div class="form-group"><label>القناة الصوتية (اختياري)</label><input type="text" id="in-m-audio-track" placeholder="Audio 1 / Audio 2"></div>
-                    <button class="btn-action" onclick="addOrUpdateMatch()">حفظ / نشر المباراة</button>
-                </div>
-                <div class="form-section">
-                    <h4>المباريات الحالية (تعديل / حذف)</h4>
-                    <div class="cards-manage-list" id="manage-matches-list"></div>
-                </div>
-                <button class="btn-action" style="background:var(--accent-red);" onclick="closeModal('home')">إغلاق</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ================= لوحة 2: إدارة القنوات الناقلة للمباراة الحالية (108) ================= -->
-    <div id="ch-admin-modal" class="modal-overlay">
-        <div class="modal-box">
-            <div id="ch-admin-login">
-                <h3 style="margin-bottom:12px; text-align:center; font-size:1rem;">إدارة القنوات الناقلة لهذه المباراة</h3>
-                <div class="form-group"><input type="password" id="ch-pass-code" placeholder="كلمة المرور (108)"></div>
-                <button class="btn-action" onclick="checkChPassword()">دخول</button>
-            </div>
-            <div id="ch-admin-form" style="display:none;">
-                <h3 style="margin-bottom:12px; color:var(--accent-blue); font-size:1rem;" id="ch-form-title">إضافة قناة ناقلة جديدة</h3>
-                <input type="hidden" id="edit-ch-id" value="">
-                <div class="form-section">
-                    <div class="form-group"><label>اسم القناة (اختياري)</label><input type="text" id="in-ch-name" placeholder="beIN SPORTS 1 HD"></div>
-                    <div class="form-group"><label>رابط اللوجو (اختياري)</label><input type="text" id="in-ch-img" placeholder="رابط الصورة"></div>
-                    <div class="form-group"><label>القمر (اختياري)</label><input type="text" id="in-ch-sat" placeholder="Nilesat 7.0W"></div>
-                    <div class="form-group"><label>التردد (اختياري)</label><input type="text" id="in-ch-freq" placeholder="11054"></div>
-                    <div class="form-group"><label>الاستقطاب (اختياري)</label><select id="in-ch-polar"><option value="H">أفقي (H)</option><option value="V">عمودي (V)</option></select></div>
-                    <div class="form-group"><label>معدل الترميز (اختياري)</label><input type="text" id="in-ch-rate" placeholder="27500"></div>
-                    <button class="btn-action" onclick="saveChannelCard()">حفظ الكارت لهذه المباراة</button>
-                </div>
-                <div class="form-section">
-                    <h4>القنوات المضافة لهذه المباراة (تعديل / حذف)</h4>
-                    <div class="cards-manage-list" id="manage-channels-list"></div>
-                </div>
-                <button class="btn-action" style="background:var(--accent-red);" onclick="closeModal('ch')">إغلاق</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ================= لوحة 3: إدارة التايم شيفت للمباراة الحالية (108) ================= -->
-    <div id="ts-admin-modal" class="modal-overlay">
-        <div class="modal-box">
-            <div id="ts-admin-login">
-                <h3 style="margin-bottom:12px; text-align:center; font-size:1rem;">إدارة التايم شيفت لهذه المباراة</h3>
-                <div class="form-group"><input type="password" id="ts-pass-code" placeholder="كلمة المرور (108)"></div>
-                <button class="btn-action" style="background:var(--accent-green);" onclick="checkTsPassword()">دخول</button>
-            </div>
-            <div id="ts-admin-form" style="display:none;">
-                <h3 style="margin-bottom:12px; color:var(--accent-green); font-size:1rem;" id="ts-form-title">إضافة كارت تايم شيفت جديد</h3>
-                <input type="hidden" id="edit-ts-id" value="">
-                <div class="form-section">
-                    <div class="form-group"><label>رابط الصورة 16:9 (اختياري)</label><input type="text" id="in-ts-img" placeholder="رابط الصورة"></div>
-                    <div class="form-group"><label>اسم القناة (اختياري)</label><input type="text" id="in-ts-ch-name" placeholder="beIN SPORTS MAX 1"></div>
-                    <div class="form-group"><label>القمر (اختياري)</label><input type="text" id="in-ts-sat" placeholder="Nilesat 7.0W"></div>
-                    <div class="form-group"><label>التردد (اختياري)</label><input type="text" id="in-ts-freq" placeholder="11054"></div>
-                    <div class="form-group"><label>الاستقطاب (اختياري)</label><select id="in-ts-polar"><option value="H">أفقي (H)</option><option value="V">عمودي (V)</option></select></div>
-                    <div class="form-group"><label>معدل الترميز (اختياري)</label><input type="text" id="in-ts-rate" placeholder="27500"></div>
-                    <div class="form-group"><label>القناة الصوتية (اختياري)</label><input type="text" id="in-ts-audio" placeholder="Audio 1"></div>
-                    <div class="form-group"><label>فارق التايم شيفت بالثواني (اختياري)</label><input type="number" id="in-ts-delay" placeholder="5"></div>
-                    <div class="form-group"><label>اسم المعلق (اختياري)</label><input type="text" id="in-ts-comm" placeholder="حفيظ دراجي"></div>
-                    <div class="form-group"><label>اسم الريسيفر (اختياري)</label><input type="text" id="in-ts-receiver" placeholder="Senator Captain 15"></div>
-                    <div class="form-group"><label>ريسيفرات نفس التايم شيفت (اختياري)</label><input type="text" id="in-ts-same-receivers" placeholder="Nova I-Mac, Joker Premium"></div>
-                    <button class="btn-action" style="background:var(--accent-green);" onclick="saveTimeShiftCard()">حفظ الكارت لهذه المباراة</button>
-                </div>
-                <div class="form-section">
-                    <h4>كروت التايم شيفت لهذه المباراة (تعديل / حذف)</h4>
-                    <div class="cards-manage-list" id="manage-timeshift-list"></div>
-                </div>
-                <button class="btn-action" style="background:var(--accent-red);" onclick="closeModal('ts')">إغلاق</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ================= ربط مكتبة Firebase السحابية ================= -->
+    <!-- Firebase SDK (وضع القراءة المباشرة فقط) -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyC_CKgSs7ajVzcCdJyqLQfqrXPl7DjJPo0",
@@ -447,23 +299,13 @@
                 const data = snapshot.data();
                 window.todayDateText = data.todayDateText || "الأربعاء، 12 أغسطس 2026";
                 window.matchesData = data.matchesData || [];
-            } else {
-                saveDataToCloud();
             }
             renderMatchesList();
             if (window.activeMatchId) renderMatchDetails();
+        }, (error) => {
+            console.log("Firebase Read Error:", error);
+            renderMatchesList();
         });
-
-        window.saveDataToCloud = async function() {
-            try {
-                await setDoc(docRef, {
-                    todayDateText: window.todayDateText,
-                    matchesData: window.matchesData
-                });
-            } catch (e) {
-                console.error("خطأ في حفظ البيانات سحابياً: ", e);
-            }
-        };
     </script>
 
     <script>
@@ -544,7 +386,7 @@
             document.getElementById('detail-match-header-ts').innerHTML = headerHtml;
 
             const chContainer = document.getElementById('channels-cards-container');
-            chContainer.innerHTML = m.channels.map(c => `
+            chContainer.innerHTML = (m.channels || []).map(c => `
                 <div class="sat-card">
                     <div class="card-header" onclick="toggleCard('ch-body-${c.id}', 'ch-arrow-${c.id}')">
                         <div class="channel-title">
@@ -563,7 +405,7 @@
             `).join('') || '<div style="color:var(--text-gray); text-align:center; padding:12px; font-size:0.8rem;">لا توجد قنوات ناقلة مضافة لهذه المباراة</div>';
 
             const tsContainer = document.getElementById('timeshift-cards-container');
-            tsContainer.innerHTML = m.timeshifts.map(c => {
+            tsContainer.innerHTML = (m.timeshifts || []).map(c => {
                 const sameList = c.sameReceivers ? c.sameReceivers.split(',').map(r => `<span class="receiver-tag">${r.trim()}</span>`).join('') : '';
                 return `
                 <div class="sat-card">
@@ -599,378 +441,6 @@
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             btn.classList.add('active');
-        }
-
-        let homeClicks = 0, homeTimer;
-        function handleDateClick() {
-            homeClicks++; clearTimeout(homeTimer);
-            if (homeClicks === 5) {
-                document.getElementById('home-admin-modal').style.display = 'flex';
-                homeClicks = 0;
-            }
-            homeTimer = setTimeout(() => homeClicks = 0, 2000);
-        }
-
-        let chClicks = 0, chTimer;
-        let tsClicks = 0, tsTimer;
-        function handleTabClick(type, btn) {
-            if (type === 'ch') {
-                switchTab('channels-tab', btn);
-                chClicks++; clearTimeout(chTimer);
-                if (chClicks === 5) {
-                    document.getElementById('ch-admin-modal').style.display = 'flex';
-                    chClicks = 0;
-                }
-                chTimer = setTimeout(() => chClicks = 0, 2000);
-            } else if (type === 'ts') {
-                switchTab('timeshift-tab', btn);
-                tsClicks++; clearTimeout(tsTimer);
-                if (tsClicks === 5) {
-                    document.getElementById('ts-admin-modal').style.display = 'flex';
-                    tsClicks = 0;
-                }
-                tsTimer = setTimeout(() => tsClicks = 0, 2000);
-            }
-        }
-
-        function checkHomePassword() {
-            if (document.getElementById('home-pass-code').value === '108') {
-                document.getElementById('home-admin-login').style.display = 'none';
-                document.getElementById('home-admin-form').style.display = 'block';
-                renderHomeManageList();
-            } else alert('كلمة المرور غير صحيحة!');
-        }
-
-        function checkChPassword() {
-            if (document.getElementById('ch-pass-code').value === '108') {
-                document.getElementById('ch-admin-login').style.display = 'none';
-                document.getElementById('ch-admin-form').style.display = 'block';
-                renderChManageList();
-            } else alert('كلمة المرور غير صحيحة!');
-        }
-
-        function checkTsPassword() {
-            if (document.getElementById('ts-pass-code').value === '108') {
-                document.getElementById('ts-admin-login').style.display = 'none';
-                document.getElementById('ts-admin-form').style.display = 'block';
-                renderTsManageList();
-            } else alert('كلمة المرور غير صحيحة!');
-        }
-
-        function closeModal(type) {
-            if (type === 'home') document.getElementById('home-admin-modal').style.display = 'none';
-            if (type === 'ch') document.getElementById('ch-admin-modal').style.display = 'none';
-            if (type === 'ts') document.getElementById('ts-admin-modal').style.display = 'none';
-        }
-
-        function saveTodayDate() {
-            const val = document.getElementById('in-today-date').value;
-            if (val) {
-                window.todayDateText = val;
-                window.saveDataToCloud();
-                alert('تم حفظ التاريخ سحابياً!');
-            }
-        }
-
-        function addOrUpdateMatch() {
-            const editId = document.getElementById('edit-match-id').value;
-            const tournament = document.getElementById('in-m-tournament').value;
-            const t1Name = document.getElementById('in-m-t1-name').value;
-            const t1Img = document.getElementById('in-m-t1-img').value;
-            const t2Name = document.getElementById('in-m-t2-name').value;
-            const t2Img = document.getElementById('in-m-t2-img').value;
-            const time = document.getElementById('in-m-time').value;
-            const comm = document.getElementById('in-m-comm').value;
-            const mainChannel = document.getElementById('in-m-main-channel').value;
-            const audioTrack = document.getElementById('in-m-audio-track').value;
-
-            if (editId) {
-                const match = window.matchesData.find(m => m.id == editId);
-                if (match) {
-                    if(tournament) match.tournament = tournament;
-                    if(t1Name) match.t1Name = t1Name;
-                    if(t1Img) match.t1Img = t1Img;
-                    if(t2Name) match.t2Name = t2Name;
-                    if(t2Img) match.t2Img = t2Img;
-                    if(time) match.time = time;
-                    if(comm) match.comm = comm;
-                    if(mainChannel) match.mainChannel = mainChannel;
-                    if(audioTrack) match.audioTrack = audioTrack;
-                }
-                document.getElementById('edit-match-id').value = '';
-                document.getElementById('match-form-title').innerText = 'إضافة مباراة جديدة اليوم (جميع الخانات اختيارية)';
-            } else {
-                window.matchesData.push({
-                    id: Date.now(),
-                    tournament: tournament || 'مباراة اليوم',
-                    t1Name: t1Name || 'الفريق 1',
-                    t1Img: t1Img || 'https://via.placeholder.com/60?text=T1',
-                    t2Name: t2Name || 'الفريق 2',
-                    t2Img: t2Img || 'https://via.placeholder.com/60?text=T2',
-                    time: time || '00:00',
-                    comm: comm || 'غير محدد',
-                    mainChannel: mainChannel || 'غير محدد',
-                    audioTrack: audioTrack || 'غير محدد',
-                    channels: [],
-                    timeshifts: []
-                });
-            }
-
-            window.saveDataToCloud();
-
-            document.getElementById('in-m-tournament').value = '';
-            document.getElementById('in-m-t1-name').value = '';
-            document.getElementById('in-m-t1-img').value = '';
-            document.getElementById('in-m-t2-name').value = '';
-            document.getElementById('in-m-t2-img').value = '';
-            document.getElementById('in-m-time').value = '';
-            document.getElementById('in-m-comm').value = '';
-            document.getElementById('in-m-main-channel').value = '';
-            document.getElementById('in-m-audio-track').value = '';
-
-            renderHomeManageList();
-            alert('تم حفظ المباراة سحابياً بنجاح!');
-        }
-
-        function editMatch(id) {
-            const m = window.matchesData.find(item => item.id == id);
-            if (m) {
-                document.getElementById('edit-match-id').value = m.id;
-                document.getElementById('in-m-tournament').value = m.tournament || '';
-                document.getElementById('in-m-t1-name').value = m.t1Name || '';
-                document.getElementById('in-m-t1-img').value = m.t1Img || '';
-                document.getElementById('in-m-t2-name').value = m.t2Name || '';
-                document.getElementById('in-m-t2-img').value = m.t2Img || '';
-                document.getElementById('in-m-time').value = m.time || '';
-                document.getElementById('in-m-comm').value = m.comm || '';
-                document.getElementById('in-m-main-channel').value = m.mainChannel || '';
-                document.getElementById('in-m-audio-track').value = m.audioTrack || '';
-                document.getElementById('match-form-title').innerText = 'تعديل بيانات المباراة الحالية';
-            }
-        }
-
-        function deleteMatch(id) {
-            if (confirm('حذف هذه المباراة بالكامل؟')) {
-                window.matchesData = window.matchesData.filter(m => m.id !== id);
-                window.saveDataToCloud();
-                renderHomeManageList();
-            }
-        }
-
-        function renderHomeManageList() {
-            const container = document.getElementById('manage-matches-list');
-            container.innerHTML = window.matchesData.map(m => `
-                <div class="manage-item">
-                    <span>${m.t1Name || 'فريق 1'} VS ${m.t2Name || 'فريق 2'}</span>
-                    <div>
-                        <button class="manage-item-btn btn-edit" onclick="editMatch(${m.id})">تعديل ✏️</button>
-                        <button class="manage-item-btn btn-delete" onclick="deleteMatch(${m.id})">حذف 🗑️</button>
-                    </div>
-                </div>
-            `).join('') || '<div style="color:var(--text-gray); font-size:0.8rem;">لا توجد مباريات مضافة</div>';
-        }
-
-        /* إضافة أو تعديل قناة ناقلة */
-        function saveChannelCard() {
-            const m = window.matchesData.find(item => item.id === window.activeMatchId);
-            if (!m) return;
-
-            const editChId = document.getElementById('edit-ch-id').value;
-            const name = document.getElementById('in-ch-name').value;
-            const img = document.getElementById('in-ch-img').value;
-            const sat = document.getElementById('in-ch-sat').value;
-            const freq = document.getElementById('in-ch-freq').value;
-            const polar = document.getElementById('in-ch-polar').value;
-            const rate = document.getElementById('in-ch-rate').value;
-
-            if (editChId) {
-                const ch = m.channels.find(c => c.id == editChId);
-                if (ch) {
-                    if (name) ch.name = name;
-                    if (img) ch.img = img;
-                    if (sat) ch.sat = sat;
-                    if (freq) ch.freq = freq;
-                    if (polar) ch.polar = polar;
-                    if (rate) ch.rate = rate;
-                }
-                document.getElementById('edit-ch-id').value = '';
-                document.getElementById('ch-form-title').innerText = 'إضافة قناة ناقلة جديدة';
-            } else {
-                m.channels.push({
-                    id: Date.now(),
-                    name: name || 'قناة ناقلة',
-                    img: img || 'https://via.placeholder.com/50?text=TV',
-                    sat: sat || 'غير محدد',
-                    freq: freq || 'غير محدد',
-                    polar: polar || 'H',
-                    rate: rate || '27500'
-                });
-            }
-
-            window.saveDataToCloud();
-
-            document.getElementById('in-ch-name').value = '';
-            document.getElementById('in-ch-img').value = '';
-            document.getElementById('in-ch-sat').value = '';
-            document.getElementById('in-ch-freq').value = '';
-            document.getElementById('in-ch-rate').value = '';
-
-            renderChManageList();
-            alert('تم حفظ القناة الناقلة بنجاح!');
-        }
-
-        function editChCard(id) {
-            const m = window.matchesData.find(item => item.id === window.activeMatchId);
-            if (!m) return;
-            const ch = m.channels.find(c => c.id == id);
-            if (ch) {
-                document.getElementById('edit-ch-id').value = ch.id;
-                document.getElementById('in-ch-name').value = ch.name || '';
-                document.getElementById('in-ch-img').value = ch.img || '';
-                document.getElementById('in-ch-sat').value = ch.sat || '';
-                document.getElementById('in-ch-freq').value = ch.freq || '';
-                document.getElementById('in-ch-polar').value = ch.polar || 'H';
-                document.getElementById('in-ch-rate').value = ch.rate || '';
-                document.getElementById('ch-form-title').innerText = 'تعديل القناة الناقلة الحالية';
-            }
-        }
-
-        function deleteChCard(id) {
-            const m = window.matchesData.find(item => item.id === window.activeMatchId);
-            if (m && confirm('حذف هذا الكارت؟')) {
-                m.channels = m.channels.filter(c => c.id !== id);
-                window.saveDataToCloud();
-                renderChManageList();
-            }
-        }
-
-        function renderChManageList() {
-            const m = window.matchesData.find(item => item.id === window.activeMatchId);
-            if (!m) return;
-            const container = document.getElementById('manage-channels-list');
-            container.innerHTML = m.channels.map(c => `
-                <div class="manage-item">
-                    <span>${c.name} (${c.freq})</span>
-                    <div>
-                        <button class="manage-item-btn btn-edit" onclick="editChCard(${c.id})">تعديل ✏️</button>
-                        <button class="manage-item-btn btn-delete" onclick="deleteChCard(${c.id})">حذف 🗑️</button>
-                    </div>
-                </div>
-            `).join('') || '<div style="color:var(--text-gray); font-size:0.8rem;">لا توجد كروت لهذه المباراة</div>';
-        }
-
-        /* إضافة أو تعديل كارت التايم شيفت */
-        function saveTimeShiftCard() {
-            const m = window.matchesData.find(item => item.id === window.activeMatchId);
-            if (!m) return;
-
-            const editTsId = document.getElementById('edit-ts-id').value;
-            const img = document.getElementById('in-ts-img').value;
-            const chName = document.getElementById('in-ts-ch-name').value;
-            const sat = document.getElementById('in-ts-sat').value;
-            const freq = document.getElementById('in-ts-freq').value;
-            const polar = document.getElementById('in-ts-polar').value;
-            const rate = document.getElementById('in-ts-rate').value;
-            const audio = document.getElementById('in-ts-audio').value;
-            const delay = document.getElementById('in-ts-delay').value;
-            const comm = document.getElementById('in-ts-comm').value;
-            const receiver = document.getElementById('in-ts-receiver').value;
-            const sameReceivers = document.getElementById('in-ts-same-receivers').value;
-
-            if (editTsId) {
-                const ts = m.timeshifts.find(c => c.id == editTsId);
-                if (ts) {
-                    if (img) ts.img = img;
-                    if (chName) ts.chName = chName;
-                    if (sat) ts.sat = sat;
-                    if (freq) ts.freq = freq;
-                    if (polar) ts.polar = polar;
-                    if (rate) ts.rate = rate;
-                    if (audio) ts.audio = audio;
-                    if (delay) ts.delay = delay;
-                    if (comm) ts.comm = comm;
-                    if (receiver) ts.receiver = receiver;
-                    if (sameReceivers !== undefined && sameReceivers !== null && sameReceivers !== '') ts.sameReceivers = sameReceivers;
-                }
-                document.getElementById('edit-ts-id').value = '';
-                document.getElementById('ts-form-title').innerText = 'إضافة كارت تايم شيفت جديد';
-            } else {
-                m.timeshifts.push({
-                    id: Date.now(),
-                    img: img || 'https://via.placeholder.com/600x337?text=16:9+Image',
-                    chName: chName || 'قناة التايم شيفت',
-                    sat: sat || 'غير محدد',
-                    freq: freq || 'غير محدد',
-                    polar: polar || 'H',
-                    rate: rate || '27500',
-                    audio: audio || 'غير محدد',
-                    delay: delay || '0',
-                    comm: comm || 'غير محدد',
-                    receiver: receiver || 'غير محدد',
-                    sameReceivers: sameReceivers || ''
-                });
-            }
-
-            window.saveDataToCloud();
-
-            document.getElementById('in-ts-img').value = '';
-            document.getElementById('in-ts-ch-name').value = '';
-            document.getElementById('in-ts-sat').value = '';
-            document.getElementById('in-ts-freq').value = '';
-            document.getElementById('in-ts-rate').value = '';
-            document.getElementById('in-ts-audio').value = '';
-            document.getElementById('in-ts-delay').value = '';
-            document.getElementById('in-ts-comm').value = '';
-            document.getElementById('in-ts-receiver').value = '';
-            document.getElementById('in-ts-same-receivers').value = '';
-
-            renderTsManageList();
-            alert('تم حفظ كارت التايم شيفت بنجاح!');
-        }
-
-        function editTsCard(id) {
-            const m = window.matchesData.find(item => item.id === window.activeMatchId);
-            if (!m) return;
-            const ts = m.timeshifts.find(c => c.id == id);
-            if (ts) {
-                document.getElementById('edit-ts-id').value = ts.id;
-                document.getElementById('in-ts-img').value = ts.img || '';
-                document.getElementById('in-ts-ch-name').value = ts.chName || '';
-                document.getElementById('in-ts-sat').value = ts.sat || '';
-                document.getElementById('in-ts-freq').value = ts.freq || '';
-                document.getElementById('in-ts-polar').value = ts.polar || 'H';
-                document.getElementById('in-ts-rate').value = ts.rate || '';
-                document.getElementById('in-ts-audio').value = ts.audio || '';
-                document.getElementById('in-ts-delay').value = ts.delay || '';
-                document.getElementById('in-ts-comm').value = ts.comm || '';
-                document.getElementById('in-ts-receiver').value = ts.receiver || '';
-                document.getElementById('in-ts-same-receivers').value = ts.sameReceivers || '';
-                document.getElementById('ts-form-title').innerText = 'تعديل كارت التايم شيفت الحالي';
-            }
-        }
-
-        function deleteTsCard(id) {
-            const m = window.matchesData.find(item => item.id === window.activeMatchId);
-            if (m && confirm('حذف هذا الكارت؟')) {
-                m.timeshifts = m.timeshifts.filter(c => c.id !== id);
-                window.saveDataToCloud();
-                renderTsManageList();
-            }
-        }
-
-        function renderTsManageList() {
-            const m = window.matchesData.find(item => item.id === window.activeMatchId);
-            if (!m) return;
-            const container = document.getElementById('manage-timeshift-list');
-            container.innerHTML = m.timeshifts.map(c => `
-                <div class="manage-item">
-                    <span>${c.chName} (${c.delay} ثانية)</span>
-                    <div>
-                        <button class="manage-item-btn btn-edit" onclick="editTsCard(${c.id})">تعديل ✏️</button>
-                        <button class="manage-item-btn btn-delete" onclick="deleteTsCard(${c.id})">حذف 🗑️</button>
-                    </div>
-                </div>
-            `).join('') || '<div style="color:var(--text-gray); font-size:0.8rem;">لا توجد كروت لهذه المباراة</div>';
         }
 
         showHomeView(false);
