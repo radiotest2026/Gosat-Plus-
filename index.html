@@ -217,8 +217,25 @@
             background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px;
             overflow: hidden; margin-bottom: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.25);
         }
-        .media-box-16-9 { width: 100%; aspect-ratio: 16 / 9; background: #0f172a; overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 12px 12px 0 0; }
-        .media-box-16-9 img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* صندوق صورة التايم شيفت يعرض الحجم كاملاً بدون قص */
+        .media-box-16-9 {
+            width: 100%;
+            background: #0f172a;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px 12px 0 0;
+            border-bottom: 1px solid var(--card-border);
+        }
+        .media-box-16-9 img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+            display: block;
+        }
         
         .channel-name-banner, .card-header {
             padding: 9px 12px; font-size: 0.88rem; font-weight: 800; color: var(--accent-gold);
@@ -318,7 +335,7 @@
         </div>
     </div>
 
-    <!-- Firebase SDK (يعتمد كلياً على آخر تحديث من قاعدة البيانات) -->
+    <!-- Firebase SDK -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
@@ -336,7 +353,6 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // قراءة التاريخ المحفوظ محلياً كقيمة مبدئية لمنع أي ارتداد
         window.todayDateText = localStorage.getItem('gosat_cached_date') || "";
         window.activeMatchId = null;
         window.matchesData = [];
@@ -463,7 +479,7 @@
                 const sameList = c.sameReceivers ? c.sameReceivers.split(',').map(r => `<span class="receiver-tag">${r.trim()}</span>`).join('') : '';
                 return `
                 <div class="sat-card">
-                    <div class="media-box-16-9"><img src="${c.img || 'https://via.placeholder.com/600x337?text=16:9+Image'}"></div>
+                    <div class="media-box-16-9"><img src="${c.img || 'https://via.placeholder.com/600x337?text=Timeshift+Image'}"></div>
                     <div class="channel-name-banner" onclick="toggleCard('ts-body-${c.id}', 'ts-arrow-${c.id}')">
                         <span>${c.chName || 'قناة التايم شيفت'}</span>
                         <i class="fa-solid fa-chevron-down arrow-icon" id="ts-arrow-${c.id}"></i>
