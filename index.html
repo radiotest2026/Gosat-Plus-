@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- وسوم الأمان والأرشفة النظيفة -->
+    <!-- وسوم الثقة والأمان النظامية لروبوتات جوجل -->
     <meta name="robots" content="index, follow" />
-    <meta name="description" content="جدول مباريات اليوم والقنوات الناقلة الرياضية">
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="description" content="دليل رياضي لعرض جدول مواعيد مباريات اليوم وترددات القنوات الرياضية والتايم شيفت">
     <meta name="google-site-verification" content="zAHADt6CMM6TaQ_Ab1fJcb1uEacPGCWXtTTSjv7egwE" />
 
-    <title>GOSAT PLUS - دليل المباريات والقنوات</title>
+    <title>GOSAT PLUS - سيرفر جوسات بلس</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -27,7 +28,7 @@
         }
 
         * { box-sizing: border-box; font-family: 'Cairo', sans-serif; margin: 0; padding: 0; }
-        body { background-color: var(--bg-main); color: var(--text-white); padding-bottom: 30px; min-height: 100vh; }
+        body { background-color: var(--bg-main); color: var(--text-white); padding-bottom: 20px; min-height: 100vh; display: flex; flex-direction: column; }
 
         header {
             position: sticky;
@@ -124,24 +125,12 @@
         }
 
         @keyframes dotGlow {
-            0% {
-                opacity: 0.25;
-                transform: scale(0.7);
-                color: #0284c7;
-                filter: drop-shadow(0 0 0px transparent);
-            }
-            50% {
-                opacity: 0.75;
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1.35);
-                color: #00f2fe;
-                filter: drop-shadow(0 0 7px rgba(0, 242, 254, 0.95));
-            }
+            0% { opacity: 0.25; transform: scale(0.7); color: #0284c7; filter: drop-shadow(0 0 0px transparent); }
+            50% { opacity: 0.75; }
+            100% { opacity: 1; transform: scale(1.35); color: #00f2fe; filter: drop-shadow(0 0 7px rgba(0, 242, 254, 0.95)); }
         }
 
-        .container { max-width: 520px; margin: 0 auto; padding: 0 10px; }
+        .container { max-width: 520px; margin: 0 auto; padding: 0 10px; flex: 1; width: 100%; }
 
         .date-banner {
             text-align: center; background: var(--card-bg); border: 1px solid var(--card-border);
@@ -221,21 +210,11 @@
         }
         
         .media-box-16-9 {
-            width: 100%;
-            background: #0f172a;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px 12px 0 0;
-            border-bottom: 1px solid var(--card-border);
+            width: 100%; background: #0f172a; overflow: hidden; display: flex;
+            align-items: center; justify-content: center; border-radius: 12px 12px 0 0; border-bottom: 1px solid var(--card-border);
         }
         .media-box-16-9 img {
-            width: 100%;
-            height: auto;
-            max-height: 400px;
-            object-fit: contain;
-            display: block;
+            width: 100%; height: auto; max-height: 400px; object-fit: contain; display: block;
         }
         
         .channel-name-banner, .card-header {
@@ -274,6 +253,14 @@
         .same-timeshift-title { font-size: 0.75rem; color: var(--accent-gold); font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
         .receivers-tags { display: flex; flex-wrap: wrap; gap: 4px; }
         .receiver-tag { background: #1e293b; border: 1px solid var(--card-border); color: var(--text-white); font-size: 0.72rem; padding: 2px 8px; border-radius: 6px; font-weight: 600; }
+
+        /* تذييل الثقة والأمان النظامي */
+        footer {
+            margin-top: 25px; padding: 15px 10px; text-align: center; font-size: 0.72rem;
+            color: var(--text-gray); border-top: 1px solid var(--card-border); background: rgba(11, 17, 32, 0.5);
+        }
+        footer p { margin-bottom: 4px; }
+        .trust-badge { color: var(--accent-green); font-weight: 600; display: inline-flex; align-items: center; gap: 4px; }
     </style>
 </head>
 <body>
@@ -335,6 +322,12 @@
             </div>
         </div>
     </div>
+
+    <!-- تذييل إثبات الهوية النظامية لمحركات البحث -->
+    <footer>
+        <p class="trust-badge"><i class="fa-solid fa-shield-halved"></i> موقع إعلامي لعرض مواعيد وجداول البث الرياضي</p>
+        <p>جميع الحقوق محفوظة © GOSAT PLUS - دليل رياضي عام لا يطلب أي بيانات دخول أو تسجيل</p>
+    </footer>
 
     <!-- Firebase SDK -->
     <script type="module">
