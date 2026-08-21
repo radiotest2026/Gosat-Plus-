@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- وسوم الحماية القصوى والأرشفة النظيفة ومنع التصيد -->
+    <!-- وسوم الحماية والأرشفة النظيفة -->
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="robots" content="index, follow" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
@@ -255,7 +255,6 @@
         .receivers-tags { display: flex; flex-wrap: wrap; gap: 4px; }
         .receiver-tag { background: #1e293b; border: 1px solid var(--card-border); color: var(--text-white); font-size: 0.72rem; padding: 2px 8px; border-radius: 6px; font-weight: 600; }
 
-        /* تذييل الثقة والأمان النظامي */
         footer {
             margin-top: 25px; padding: 15px 10px; text-align: center; font-size: 0.72rem;
             color: var(--text-gray); border-top: 1px solid var(--card-border); background: rgba(11, 17, 32, 0.5);
@@ -324,7 +323,7 @@
         </div>
     </div>
 
-    <!-- تذييل إثبات الهوية النظامية لمحركات البحث -->
+    <!-- تذييل إثبات الهوية النظامية -->
     <footer>
         <p class="trust-badge"><i class="fa-solid fa-shield-halved"></i> موقع إعلامي لعرض مواعيد وجداول البث الرياضي</p>
         <p>جميع الحقوق محفوظة © GOSAT PLUS - دليل رياضي عام لا يطلب أي بيانات دخول أو تسجيل</p>
@@ -396,12 +395,65 @@
             history.pushState({ page: 'details', matchId: matchId }, '', '#match-' + matchId);
         }
 
+        // دالة تحويل الوقت (مثل "20:00" أو "8:00 PM") إلى دقائق لتسهيل الترتيب الزمني الدقيق
+        function timeToMinutes(timeStr) {
+            if (!timeStr) return 9999;
+            const str = timeStr.trim();
+            const isPM = /pm|م/i.test(str);
+            const isAM = /am|ص/i.test(str);
+            const parts = str.replace(/[^\d:]/g, '').split(':');
+            let h = parseInt(parts[0], 10) || 0;
+            let m = parseInt(parts[1], 10) || 0;
+
+            if (isPM && h < 12) h += 12;
+            if (isAM && h === 12) h = 0;
+            return h * 60 + m;
+        }
+
         function renderMatchesList() {
             if (window.todayDateText) {
                 document.getElementById('disp-today-date').innerText = window.todayDateText;
             }
             const container = document.getElementById('matches-list-container');
-            container.innerHTML = window.matchesData.map(m => `
+            const rawMatches = window.matchesData || [];
+
+            if (rawMatches.length === 0) {
+                container.innerHTML = '<div style="text-align:center; padding:15px; color:var(--text-gray); font-size:0.85rem;">لا توجد مباريات مضافة اليوم</div>';
+                return;
+            }
+
+            // 1. تجميع المباريات حسب اسم الدوري / البطولة
+            const groupedTournaments = {};
+            rawMatches.forEach(match => {
+                const tourName = (match.tournament || 'مباريات اليوم').trim();
+                if (!groupedTournaments[tourName]) {
+                    groupedTournaments[tourName] = [];
+                }
+                groupedTournaments[tourName].push(match);
+            });
+
+            // 2. ترتيب مباريات كل دوري داخلياً حسب التوقيت (الأبكر أولاً)
+            const tournamentList = Object.keys(groupedTournaments).map(tourName => {
+                const matches = groupedTournaments[tourName].sort((a, b) => {
+                    return timeToMinutes(a.time) - timeToMinutes(b.time);
+                });
+                return {
+                    tournament: tourName,
+                    earliestTime: timeToMinutes(matches[0].time),
+                    matches: matches
+                };
+            });
+
+            // 3. ترتيب الدوريات نفسها بحيث يظهر الدوري ذو المباراة الأبكر زمنياً في الأعلى
+            tournamentList.sort((a, b) => a.earliestTime - b.earliestTime);
+
+            // 4. بناء القائمة المرتبة زمنياً بالكامل
+            const sortedMatches = [];
+            tournamentList.forEach(t => {
+                t.matches.forEach(m => sortedMatches.push(m));
+            });
+
+            container.innerHTML = sortedMatches.map(m => `
                 <div class="match-card-item" onclick="openMatchDetails(${m.id})">
                     <div style="text-align:center;">
                         <span class="match-card-tournament">${m.tournament || 'مباراة اليوم'}</span>
@@ -420,7 +472,7 @@
                         </div>
                     </div>
                 </div>
-            `).join('') || '<div style="text-align:center; padding:15px; color:var(--text-gray); font-size:0.85rem;">لا توجد مباريات مضافة اليوم</div>';
+            `).join('');
         }
 
         function renderMatchDetails() {
